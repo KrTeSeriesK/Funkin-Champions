@@ -143,7 +143,7 @@ class Character extends FlxSprite
 				// DAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('DADDY_DEAREST');
 				frames = tex;
-				animation.addByPrefix('idle', 'Dad idle dance', 24);
+				animation.addByPrefix('idle', 'Dad idle dance', 24,false);
 				animation.addByPrefix('singUP', 'Dad Sing Note UP', 24);
 				animation.addByPrefix('singRIGHT', 'Dad Sing Note RIGHT', 24);
 				animation.addByPrefix('singDOWN', 'Dad Sing Note DOWN', 24);
@@ -577,6 +577,25 @@ class Character extends FlxSprite
 				addOffset('deathLoop', 37, 5);
 				addOffset('deathConfirm', 37, 69);
 				addOffset('scared', -4);
+
+				playAnim('idle');
+
+				flipX = true;
+				
+			case 'holo':
+				var tex = Paths.getSparrowAtlas('calibration/Holo');
+				frames = tex;
+				animation.addByPrefix('idle', 'BF idle dance', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE LEFT', 24, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN', 24, false);
+
+				addOffset('idle', -5, -250);
+				addOffset("singUP", 1, -226);
+				addOffset("singRIGHT", 22, -257);
+				addOffset("singLEFT", -48, -258);
+				addOffset("singDOWN", -40, -300);
 
 				playAnim('idle');
 

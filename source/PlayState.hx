@@ -42,9 +42,7 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 //bloopstuff
-import flixel.system.FlxAssets;
-import openfl8.blends.*;
-import openfl8.effects.BlendModeEffect.BlendModeShader;
+//import flixel.system.FlxAssets;
 
 using StringTools;
 
@@ -686,6 +684,8 @@ class PlayState extends MusicBeatState
 				dad.x -= 150;
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+			case 'holo':
+				dad.y += 100;
 		}
 		if (!CameFromChart)
 		{
@@ -1695,6 +1695,9 @@ class PlayState extends MusicBeatState
 					case 'senpai-angry' | 'senpai-angry-bsides':
 						camFollow.y = dad.getMidpoint().y - 430;
 						camFollow.x = dad.getMidpoint().x - 100;
+					case 'holo':
+						camFollow.y = dad.getMidpoint().y + 150;
+						camFollow.x = dad.getMidpoint().x + 150;
 				}
 
 				if (dad.curCharacter == 'mom' || dad.curCharacter == 'mom-bsides')
@@ -2040,7 +2043,8 @@ class PlayState extends MusicBeatState
 				transOut = FlxTransitionableState.defaultTransOut;
 				if (!perfectMode)
 				{
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					TitleState.ChangeTitleSong();
+					FlxG.sound.playMusic(Paths.music(TitleState.Song));
 					unloadAssets();
 					FlxG.switchState(new StoryMenuState());
 				}

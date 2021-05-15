@@ -96,33 +96,33 @@ class CharacterSelectState extends MusicBeatState
 		Player = new FlxSprite(770, 300);
 		Player.frames = Paths.getSparrowAtlas('CharSelect'); //this is gonna get ugly
 		
-		Player.animation.addByPrefix('boyfriend', "BOYFRIEND", 24);
+		Player.animation.addByPrefix('boyfriend', "BOYFRIEND", 24, false);
 		Player.animation.addByPrefix('boyfriendSelect', "HEY_BOYFRIEND", 24, false);
-		Player.animation.addByPrefix('bloops', "BLOOPS", 24);
+		Player.animation.addByPrefix('bloops', "BLOOPS", 24, false);
 		Player.animation.addByPrefix('bloopsSelect', "HEY_BLOOPS", 24, false);
-		Player.animation.addByPrefix('pico', "PICO", 24);
+		Player.animation.addByPrefix('pico', "PICO", 24, false);
 		Player.animation.addByPrefix('picoSelect', "HEY_PICO", 24, false);
-		Player.animation.addByPrefix('dylan', "DYLAN", 24);
+		Player.animation.addByPrefix('dylan', "DYLAN", 24, false);
 		Player.animation.addByPrefix('dylanSelect', "HEY_DYLAN", 24, false);
-		Player.animation.addByPrefix('milne', "MILNE", 24);
+		Player.animation.addByPrefix('milne', "MILNE", 24, false);
 		Player.animation.addByPrefix('milneSelect', "HEY_MILNE", 24, false);
 		
 		//B-SIDES
-		Player.animation.addByPrefix('boyfriend-bsides', "B-BOYFRIEND", 24);
+		Player.animation.addByPrefix('boyfriend-bsides', "B-BOYFRIEND", 24, false);
 		Player.animation.addByPrefix('boyfriend-bsidesSelect', "HEY_B-BOYFRIEND", 24, false);
-		Player.animation.addByPrefix('bloops-bsides', "B-BLOOPS", 24);
+		Player.animation.addByPrefix('bloops-bsides', "B-BLOOPS", 24, false);
 		Player.animation.addByPrefix('bloops-bsidesSelect', "HEY_B-BLOOPS", 24, false);
-		Player.animation.addByPrefix('pico-bsides', "B-PICO", 24);
+		Player.animation.addByPrefix('pico-bsides', "B-PICO", 24, false);
 		Player.animation.addByPrefix('pico-bsidesSelect', "HEY_B-PICO", 24, false);
-		Player.animation.addByPrefix('dylan-bsides', "B-DYLAN", 24);
+		Player.animation.addByPrefix('dylan-bsides', "B-DYLAN", 24, false);
 		Player.animation.addByPrefix('dylan-bsidesSelect', "HEY_B-DYLAN", 24, false);
-		Player.animation.addByPrefix('milne-bsides', "B-MILNE", 24);
+		Player.animation.addByPrefix('milne-bsides', "B-MILNE", 24, false);
 		Player.animation.addByPrefix('milne-bsidesSelect', "HEY_B-MILNE", 24, false);
 		
 		//PIXEL
-		Player.animation.addByPrefix('boyfriend-pixel', "PIXEL BOYFRIEND", 24);
+		Player.animation.addByPrefix('boyfriend-pixel', "PIXEL BOYFRIEND", 24, false);
 		Player.animation.addByPrefix('boyfriend-pixelSelect', "HEY_PIXEL BOYFRIEND", 24, false);
-		Player.animation.addByPrefix('boyfriend-pixel-bsides', "B-PIXEL BOYFRIEND", 24);
+		Player.animation.addByPrefix('boyfriend-pixel-bsides', "B-PIXEL BOYFRIEND", 24, false);
 		Player.animation.addByPrefix('boyfriend-pixel-bsidesSelect', "HEY_B-PIXEL BOYFRIEND", 24, false);
 		
 		Player.antialiasing = true;
@@ -148,9 +148,10 @@ class CharacterSelectState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		Conductor.songPosition = FlxG.sound.music.time;
 		if (!Selected)
 		{
-			if (!Looking)
+			if ((!Looking) && (BloopsisDebugging))
 				Player.animation.play(Playables[CharacterMenuState.curSelected][curSelected] + CharSuffix, false);
 			if (NotUpdated)
 			{
@@ -168,6 +169,7 @@ class CharacterSelectState extends MusicBeatState
 				Player.x += Offsets[OffSearch][1];
 				Player.y += Offsets[OffSearch][2];
 				NotUpdated = false;
+				Player.animation.play(Playables[CharacterMenuState.curSelected][curSelected] + CharSuffix, false);
 			}
 			if (controls.BACK)
 			{
@@ -316,5 +318,11 @@ class CharacterSelectState extends MusicBeatState
 			icons[i+1].y = 10+(100*i);
 			add(icons[i+1]);
 		}
+	}
+	override function beatHit()
+	{
+		super.beatHit();
+		if (!Selected)
+			Player.animation.play(Playables[CharacterMenuState.curSelected][curSelected] + CharSuffix, true);
 	}
 }

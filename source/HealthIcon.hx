@@ -78,6 +78,8 @@ class HealthIcon extends FlxSprite
 		animation.add('bf-dylan-car-bsides', [113, 114, 115], 0, false, isPlayer);
 		animation.add('bf-dylan-christmas-bsides', [113, 114, 115], 0, false, isPlayer);
 		
+		animation.add('holo', [120], 0, false, isPlayer);
+		
 		animation.play(char);
 		scrollFactor.set();
 		animation.curAnim.curFrame = frame;

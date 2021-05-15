@@ -38,6 +38,35 @@ class TitleState extends MusicBeatState
 {
 	static var initialized:Bool = false;
 
+	public static var Song:String = 'freakyMenu';
+	public static var titleBPM:Int = 102;
+	
+	public static function ChangeTitleSong()
+	{
+		var h = Date.now().getHours();
+		
+		if ((h >= 20 && h <= 23) || (h >= 0 && h <= 6))
+		{
+			if (Date.now().getDay() == 5)
+			{
+				TitleState.Song = 'FreshBoyfriend';
+				TitleState.titleBPM = 120;
+			}
+			else
+			{
+				TitleState.Song = 'FreshChill';
+				TitleState.titleBPM = 120;
+			}
+		}
+		else
+		{
+			TitleState.Song = 'freakyMenu';
+			TitleState.titleBPM = 102;
+		}
+		
+		Conductor.changeBPM(TitleState.titleBPM);	
+	}
+	
 	var blackScreen:FlxSprite;
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
@@ -114,6 +143,7 @@ class TitleState extends MusicBeatState
 	{
 		if (!initialized)
 		{
+			ChangeTitleSong();
 			var diamond:FlxGraphic = FlxGraphic.fromClass(GraphicTransTileDiamond);
 			diamond.persist = true;
 			diamond.destroyOnNoUse = false;
@@ -134,12 +164,10 @@ class TitleState extends MusicBeatState
 			// music.loadStream(Paths.music('freakyMenu'));
 			// FlxG.sound.list.add(music);
 			// music.play();
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music(Song), 0);
 
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
-
-		Conductor.changeBPM(102);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -151,7 +179,7 @@ class TitleState extends MusicBeatState
 		logoBl = new FlxSprite(0, 0);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
+		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
 		logoBl.animation.play('bump');
 		logoBl.setGraphicSize(Std.int(logoBl.width*0.85));
 		logoBl.updateHitbox();
@@ -367,7 +395,7 @@ class TitleState extends MusicBeatState
 
 		switch (curBeat)
 		{
-			case 1:
+			case 2:
 				createCoolText(['fnf dev team', 'bloops', 'and friends']);
 			// credTextShit.visible = true;
 			case 3:

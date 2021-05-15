@@ -123,7 +123,10 @@ class StoryMenuState extends MusicBeatState
 		if (FlxG.sound.music != null)
 		{
 			if (!FlxG.sound.music.playing)
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			{
+				TitleState.ChangeTitleSong();
+				FlxG.sound.playMusic(Paths.music(TitleState.Song));
+			}
 		}
 
 		persistentUpdate = persistentDraw = true;

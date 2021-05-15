@@ -30,30 +30,52 @@ class PerfectCertificateState extends MusicBeatState
 					"Dumbass."
 				],
 				[ //WEEK 1
+					"Her Father?",
+					"Out of the way!",
+					"Time to get freaky this friday."
 				],
 				[ //WEEK 2
+					"Surely a tough battle was had!",
+					"Be glad you're not dinner, lemons are spooky."
 				],
 				[ //WEEK 3
+					"Aren't you glad?",
+					"Old friend, long time no see!",
+					"Maybe we'll meet again someday, sayonara, pico."
 				],
 				[ //WEEK 4
+					"Not sure where this limo's going",
+					"huh?",
+					"At least you've gotten her from mom's grips. Onwards!"
 				],
 				[ //WEEK 5
+					"Christmas well spent!",
+					"Got your asses off again though, be careful!"
 				],
 				[ //WEEK 6
+					"That spirit sure looked familiar",
+					"It was a fun game night, things are looking serious now!"
 				],
 				[ //B-Tutorial
+					"placeholder text lmaoo"
 				],
 				[ //WEEK B1
+					"lol"
 				],
 				[ //WEEK B2
+					"lol"
 				],
 				[ //WEEK B3
+					"lol"
 				],
 				[ //WEEK B4
+					"lol"
 				],
 				[ //WEEK B5
+					"lol"
 				],
 				[ //WEEK B6
+					"lol"
 				]
 			],
 			[ //Freeplay

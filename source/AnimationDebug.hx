@@ -46,12 +46,12 @@ class AnimationDebug extends FlxState
 		if (isDad)
 		{
 			dad = new Character(0, 0, daAnim);
-			//dad.screenCenter();
+			dad.screenCenter(X);
 			dad.debugMode = true;
 			add(dad);
 
 			char = dad;
-			dad.flipX = false;
+			//dad.flipX = false;
 			if (daAnim == 'mom-car')
 			{
 				mom = new Character(0, 0, 'mom-car-eyes');

@@ -66,7 +66,10 @@ class FreeplayState extends MusicBeatState
 			if (FlxG.sound.music != null)
 			{
 				if (!FlxG.sound.music.playing)
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				{
+					TitleState.ChangeTitleSong();
+					FlxG.sound.playMusic(Paths.music(TitleState.Song));
+				}
 			}
 		 */
 
@@ -80,7 +83,9 @@ class FreeplayState extends MusicBeatState
 		#if debug
 		isDebug = true;
 		#end
-
+		
+		//addWeek(['champions-test'], 0, ['holo']);
+		
 		if (StoryMenuState.weekUnlocked[2] || isDebug)
 			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
 

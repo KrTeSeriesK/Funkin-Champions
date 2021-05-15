@@ -13,6 +13,8 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 
+using StringTools;
+
 class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
@@ -25,8 +27,11 @@ class PauseSubState extends MusicBeatSubstate
 	public function new(x:Float, y:Float)
 	{
 		super();
-
-		pauseMusic = new FlxSound().loadEmbedded(Paths.music('breakfast'), true, true);
+		var pauseTrack:String = 'breakfast';
+		if (PlayState.CharacterSuffix.endsWith('-bsides'))
+			pauseTrack = 'breakfast-bsides';
+		
+		pauseMusic = new FlxSound().loadEmbedded(Paths.music(pauseTrack), true, true);
 		pauseMusic.volume = 0;
 		pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2)));
 

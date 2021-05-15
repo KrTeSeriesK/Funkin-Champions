@@ -533,7 +533,7 @@ class Controls extends FlxActionSet
 			case Solo:
 				bindKeys(Control.UP, [W, FlxKey.UP]);
 				bindKeys(Control.DOWN, [S, FlxKey.DOWN]);
-				bindKeys(Control.LEFT, [A, FlxKey.LEFT]);
+				bindKeys(Control.LEFT, [A,  FlxKey.LEFT]);
 				bindKeys(Control.RIGHT, [D, FlxKey.RIGHT]);
 				bindKeys(Control.ACCEPT, [Z, SPACE, ENTER]);
 				bindKeys(Control.BACK, [BACKSPACE, ESCAPE]);

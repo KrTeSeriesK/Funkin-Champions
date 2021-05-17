@@ -30,14 +30,39 @@ class Character extends FlxSprite
 
 		switch (curCharacter)
 		{
+			case 'tankman':
+				tex = Paths.getSparrowAtlas('what/painttank__Captain');
+				frames = tex;
+				animation.addByPrefix('idle', 'Tank Idle', 30,false);
+				animation.addByPrefix('singUP', 'Tank Up', 30,false);
+				animation.addByPrefix('singDOWN', 'Tank Down', 30,false);
+				animation.addByPrefix('singLEFT', 'tank right', 30,false);
+				animation.addByPrefix('singRIGHT', 'Tank Left', 30,false);
+				animation.addByPrefix('singUP-alt', 'Tank Ugh', 30,false);
+				
+				addOffset('idle', 20, -280);
+				addOffset("singUP", 70, -280);
+				addOffset("singRIGHT", 58, -282);
+				addOffset("singLEFT", 60, -280);
+				addOffset("singDOWN", 70, -374);
+				addOffset('singUP-alt', 40,-280);
+				
+				playAnim('idle');
+				
+				setGraphicSize(Std.int(width * 1.1));
+				antialiasing = false;
+				updateHitbox();
+				
+				flipX = true;
+				
 			case 'kiryu':
 				tex = Paths.getSparrowAtlas('kiryu/Kiryu_night_funkin');
 				frames = tex;
-				animation.addByPrefix('idle', 'Idle', 24);
-				animation.addByPrefix('singUP', 'Up', 24);
-				animation.addByPrefix('singRIGHT', 'Right', 24);
-				animation.addByPrefix('singDOWN', 'Down', 24);
-				animation.addByPrefix('singLEFT', 'Left', 24);
+				animation.addByPrefix('idle', 'Idle', 24,false);
+				animation.addByPrefix('singUP', 'Up', 24,false);
+				animation.addByPrefix('singRIGHT', 'Right', 24,false);
+				animation.addByPrefix('singDOWN', 'Down', 24,false);
+				animation.addByPrefix('singLEFT', 'Left', 24,false);
 
 				addOffset('idle', 20, 10);
 				addOffset("singUP", 20, 10);

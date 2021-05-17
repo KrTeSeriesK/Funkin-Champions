@@ -199,7 +199,7 @@ class PlayState extends MusicBeatState
 					"If you can beat me here...",
 					"Only then I will even CONSIDER letting you\ndate my daughter!"
 				];
-			case 'senpai':
+			/*case 'senpai':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('senpai/senpaiDialogue'));
 			case 'roses':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
@@ -210,10 +210,12 @@ class PlayState extends MusicBeatState
 			case 'b-roses':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('b-roses/b-rosesDialogue'));
 			case 'b-thorns':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('b-thorns/b-thornsDialogue'));
+				dialogue = CoolUtil.coolTextFile(Paths.txt('b-thorns/b-thornsDialogue'));*/
 			default:
 				dialogue = ["bitch"];
 		}
+		if (storyWeek == 6 || storyWeek == 13)
+			dialogue = CoolUtil.coolTextFile(Paths.txt((SONG.song.toLowerCase())+'/'+(SONG.song.toLowerCase())+'Dialogue')); //lol
 
 		#if windows
 		// Making difficulty text for Discord Rich Presence.
@@ -588,6 +590,12 @@ class PlayState extends MusicBeatState
 					add(waveSpriteFG);
 				 */
 			}
+			case 'ugh' | 'guns' | 'stress':
+				curStage = 'tankmen';
+				
+				var yellow:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xFFffd700);
+				yellow.scrollFactor.set();
+				
 			default:
 			{
 				defaultCamZoom = 0.9;
@@ -684,8 +692,9 @@ class PlayState extends MusicBeatState
 				dad.x -= 150;
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
-			case 'holo':
+			case 'holo' | 'tankman':
 				dad.y += 100;
+			
 		}
 		if (!CameFromChart)
 		{
@@ -1695,7 +1704,7 @@ class PlayState extends MusicBeatState
 					case 'senpai-angry' | 'senpai-angry-bsides':
 						camFollow.y = dad.getMidpoint().y - 430;
 						camFollow.x = dad.getMidpoint().x - 100;
-					case 'holo':
+					case 'holo' | 'tankman':
 						camFollow.y = dad.getMidpoint().y + 150;
 						camFollow.x = dad.getMidpoint().x + 150;
 				}

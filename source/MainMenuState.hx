@@ -24,6 +24,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
+		
 	var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -36,10 +37,13 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
+	
+	var timestamp:FlxText;
 
 	var trackedAssets:Array<Dynamic> = [];
 	override function create()
 	{
+		
 		#if windows
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -109,7 +113,12 @@ class MainMenuState extends MusicBeatState
 		// NG.core.calls.event.logEvent('swag').send();
 
 		changeItem();
-
+		
+		timestamp = new FlxText(FlxG.width/2 - 50, FlxG.height - 50, 0, 'shdighisu', 20);
+		timestamp.setFormat("VCR OSD Mono", 30, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timestamp.scrollFactor.set();
+		add(timestamp);
+		
 		super.create();
 	}
 
@@ -117,6 +126,8 @@ class MainMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		timestamp.text = DateTools.format(Date.now(), "%r");
+		
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;

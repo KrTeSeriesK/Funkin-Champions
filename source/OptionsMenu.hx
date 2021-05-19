@@ -29,7 +29,7 @@ class OptionsMenu extends MusicBeatState
 	
 	static var curSelected:Int = 0;
 	var selector:FlxSprite;
-	var textMenuItems:Array<String> = ['NOTEMISS', 'PERFECT MODE', 'CHARACTER PREFERENCES'];
+	var textMenuItems:Array<String> = ['NOTEMISS', 'GAME MODES', 'CHARACTER PREFERENCES'];
 	var textMenuoptions:Array<Dynamic> = ['', '', '', ''];
 
 	var grpOptionsTexts:FlxTypedGroup<Alphabet>;
@@ -47,7 +47,6 @@ class OptionsMenu extends MusicBeatState
 		super.create();
 		
 		textMenuoptions[0] = OnOffBool(PlayState.babymode);
-		textMenuoptions[1] = OnOffBool(PlayState.perfectMode);
 		makeOptionsText();
 		changeSelection(0);
 	}
@@ -99,6 +98,10 @@ class OptionsMenu extends MusicBeatState
 				case "CHARACTER PREFERENCES":
 				{
 					FlxG.switchState(new CharacterMenuState());
+				}
+				case 'GAME MODES':
+				{
+					FlxG.switchState(new GameModeState());
 				}
 			}
 		}

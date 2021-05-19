@@ -59,8 +59,13 @@ class PlayState extends MusicBeatState
 	public static var CameFromChart:Bool = false;
 	public static var transHealth:Float = 2;
 	public static var babymode:Bool = true;
-	public static var perfectMode:Bool = false;
 	private var Steppy:Bool = false;
+	
+	public static var screenMode:Bool = false;
+	public static var autoMode:Bool = false;
+	public static var relaxedMode:Bool = false;
+	public static var championsMode:Bool = false;
+	public static var perfectMode:Bool = false;
 
 	var halloweenLevel:Bool = false;
 

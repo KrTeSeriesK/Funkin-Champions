@@ -21,7 +21,7 @@ class CharacterSelectState extends MusicBeatState
 	var Offshit:Int = 1;
 	
 	var Playables:Array<Dynamic> = [
-		['boyfriend', 'bloops', 'pico', 'milne', 'dylan'],
+		['boyfriend', 'bloops', 'pico', 'milne', 'dylan', 'pico','pico','pico','pico','pico','pico','pico','pico','pico','pico','pico','pico','pico'],
 		['boyfriend'],
 		['boyfriend', 'bloops', 'pico', 'dylan'],
 		['boyfriend']

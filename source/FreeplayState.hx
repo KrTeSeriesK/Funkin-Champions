@@ -94,7 +94,7 @@ class FreeplayState extends MusicBeatState
 			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky', 'spooky', 'monster']);
 
 		if (StoryMenuState.weekUnlocked[3] || isDebug)
-			addWeek(['Pico', 'Philly', 'Blammed'], 3, ['pico']);
+			addWeek(['Pico', 'Philly-Nice', 'Blammed'], 3, ['pico']);
 
 		if (StoryMenuState.weekUnlocked[4] || isDebug)
 			addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['mom']);
@@ -112,7 +112,7 @@ class FreeplayState extends MusicBeatState
 			addWeek(['B-Spookeez', 'B-South'], 9, ['spooky-bsides']);
 
 		if (StoryMenuState.weekUnlocked[10] || isDebug)
-			addWeek(['B-Pico', 'B-Philly', 'B-Blammed'], 10, ['pico-bsides']);
+			addWeek(['B-Pico', 'B-Philly-Nice', 'B-Blammed'], 10, ['pico-bsides']);
 
 		if (StoryMenuState.weekUnlocked[11] || isDebug)
 			addWeek(['B-Satin-Panties', 'B-High', 'B-Milf'], 11, ['mom-bsides']);

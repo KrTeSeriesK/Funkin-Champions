@@ -268,7 +268,7 @@ class PlayState extends MusicBeatState
 
 				var hallowTex = Paths.getSparrowAtlas('halloween_bg');
 
-				halloweenBG = new FlxSprite(-200, -100);
+				halloweenBG = new FlxSprite(-400, -70);
 				halloweenBG.frames = hallowTex;
 				halloweenBG.animation.addByPrefix('idle', 'halloweem bg0');
 				halloweenBG.animation.addByPrefix('lightning', 'halloweem bg lightning strike', 24, false);
@@ -278,7 +278,7 @@ class PlayState extends MusicBeatState
 
 				isHalloween = true;
 			}
-			case 'pico' | 'philly' | 'blammed' | 'b-pico' | 'b-philly' | 'b-blammed':		
+			case 'pico' | 'philly-nice' | 'blammed' | 'b-pico' | 'b-philly-nice' | 'b-blammed':		
 			{
 				curStage = 'philly';
 

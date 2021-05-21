@@ -15,14 +15,15 @@ import lime.utils.Assets;
 class GameModeState extends MusicBeatState
 {
 	static var curSelected:Int = 0;
-	var textMenuItems:Array<String> = ['SCREEN MODE', 'AUTO MODE', 'RELAXED MODE', 'CHAMPIONS MODE', 'PERFECT MODE'];
+	var textMenuItems:Array<String> = ['SCREEN MODE', 'AUTO MODE', 'RELAXED MODE', 'CHAMPIONS MODE', 'PERFECT MODE', 'RESET'];
 	var textMenuDescriptions:Array<Dynamic> = 
 	[
 		'Adds the following color over gameplay, allowing the recording of only UI elements. (For Auto, Shift + Return)', 
 		'Better than fnfbot, sit back and relax!', 
 		'Good for practicing, caps scrollspeed (change with left/right), and no health to worry about!',
 		'Go for your best shot! Pausing is disabled, single run per-week, and only 4 shots to miss!',
-		'Go for a perfect! Unlike champions mode, you only get one shot for the week!'
+		'Go for a perfect! Unlike champions mode, you only get one shot for the week!',
+		'Reset any applied modes, back to the basic experience.'
 	];
 	var grpOptionsTexts:FlxTypedGroup<Alphabet>;
 	var Description:FlxText;
@@ -136,7 +137,7 @@ class GameModeState extends MusicBeatState
 				case 'CHAMPIONS MODE':
 					PlayState.championsMode = true;
 				case 'PERFECT MODE':
-					PlayState.perfectMode = true;				
+					PlayState.perfectMode = true;	
 			}
 		}
     }

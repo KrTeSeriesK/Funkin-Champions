@@ -134,6 +134,7 @@ class PlayState extends MusicBeatState
 
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
+	var roseBeat:Int = 0;
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
@@ -524,7 +525,7 @@ class PlayState extends MusicBeatState
 				bgGirls = new BackgroundGirls(-100, 190);
 				bgGirls.scrollFactor.set(0.9, 0.9);
 
-				if (SONG.song.toLowerCase() == 'roses')
+				if (SONG.song.toLowerCase() == 'b-roses')
 				{
 					bgGirls.getScared();
 				}
@@ -953,6 +954,7 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'roses' | 'b-roses':
 					FlxG.sound.play(Paths.sound('ANGRY'));
+					dad.playAnim('lmao', true);
 					schoolIntro(doof);
 				case 'thorns' | 'b-thorns':
 					schoolIntro(doof);
@@ -1057,7 +1059,9 @@ class PlayState extends MusicBeatState
 					}
 				}
 				else
+				{
 					startCountdown();
+				}
 
 				remove(black);
 			}
@@ -2781,6 +2785,27 @@ class PlayState extends MusicBeatState
 			}
 			
 		}
+		
+		if (curBeat % 16 == 15)
+		{
+			if (curSong == 'Roses')
+			{
+				dad.playAnim('lmao', true);
+				bgGirls.getScared();
+				roseBeat = 1;
+			}
+		}
+		
+		if (roseBeat == 10)
+		{
+			bgGirls.returnNormal();
+			roseBeat = 0;
+		}
+		else if (roseBeat != 0)
+		{
+			roseBeat++;
+		}
+		
 		if (SONG.song == 'Tutorial' && dad.curCharacter == 'gf')
 		{
 			if (curBeat % 16 == 15 && curBeat > 16 && curBeat < 48)

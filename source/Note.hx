@@ -20,6 +20,7 @@ class Note extends FlxSprite
 	public var tooLate:Bool = false;
 	public var wasGoodHit:Bool = false;
 	public var prevNote:Note;
+	public var altNote:Bool = false;
 
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
@@ -32,7 +33,7 @@ class Note extends FlxSprite
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
+	public function new(strumTime:Float, noteData:Int, altNote:Bool = false, ?prevNote:Note, ?sustainNote:Bool = false)
 	{
 		super();
 
@@ -46,7 +47,7 @@ class Note extends FlxSprite
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
 		y -= 2000;
 		this.strumTime = strumTime;
-
+		this.altNote = altNote;
 		this.noteData = noteData;
 
 		var daStage:String = PlayState.curStage;
@@ -174,8 +175,8 @@ class Note extends FlxSprite
 		if (mustPress)
 		{
 			// The * 0.5 is so that it's easier to hit them too late, instead of too early
-			if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset
-				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
+			if (strumTime >= Conductor.songPosition - Conductor.safeZoneOffset
+				&& strumTime <= Conductor.songPosition + (Conductor.safeZoneOffset * 0.6))
 				canBeHit = true;
 			else
 				canBeHit = false;

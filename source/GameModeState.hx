@@ -63,15 +63,6 @@ class GameModeState extends MusicBeatState
 			grpOptionsTexts.add(optionText);
 		}
 	}
-		
-	function disableAll()
-	{
-		PlayState.screenMode = false;
-		PlayState.autoMode = false;
-		PlayState.relaxedMode = false;
-		PlayState.championsMode = false;
-		PlayState.perfectMode = false;
-	}
 	
 	function changeSelection(change:Int = 0)
 	{
@@ -113,7 +104,7 @@ class GameModeState extends MusicBeatState
 		if (controls.ACCEPT)
 		{
 			trace(textMenuItems[curSelected]);
-			disableAll();
+			PlayState.modes = [false, false, false, false, false];
 				
 			if (!(textMenuItems[curSelected] == 'SCREEN MODE'))
 				FlxG.switchState(new OptionsMenu());
@@ -125,19 +116,19 @@ class GameModeState extends MusicBeatState
 					if (FlxG.keys.pressed.SHIFT)
 					{
 						trace("ASFGJKKL:AFG");
-						PlayState.autoMode = true;
+						PlayState.modes[1] = true;
 					}
-					PlayState.screenMode = true;
-					FlxG.switchState(new CharacterMenuState());
+					PlayState.modes[0] = true;
+					FlxG.switchState(new CinematicColorState());
 				}
 				case 'AUTO MODE':
-					PlayState.autoMode = true;
+					PlayState.modes[1] = true;
 				case 'RELAXED MODE':
-					PlayState.relaxedMode = true;
+					PlayState.modes[2] = true;
 				case 'CHAMPIONS MODE':
-					PlayState.championsMode = true;
+					PlayState.modes[3] = true;
 				case 'PERFECT MODE':
-					PlayState.perfectMode = true;	
+					PlayState.modes[4] = true;	
 			}
 		}
     }

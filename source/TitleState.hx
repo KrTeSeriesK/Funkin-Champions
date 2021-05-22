@@ -31,6 +31,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
+import openfl.Lib;
 
 using StringTools;
 
@@ -40,6 +41,18 @@ class TitleState extends MusicBeatState
 
 	public static var Song:String = 'freakyMenu';
 	public static var titleBPM:Int = 102;
+	
+	public static function randString(Length:Int)
+	{
+		var string:String = '';
+		var data:String = 'qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM';
+		
+		for (i in 0...Length)
+		{
+			string += data.charAt(FlxG.random.int(0, data.length - 1));
+		}
+		return string;
+	}
 	
 	public static function ChangeTitleSong()
 	{
@@ -82,6 +95,7 @@ class TitleState extends MusicBeatState
 		#if polymod
 		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
+		
 
 		PlayerSettings.init();
 
@@ -265,13 +279,18 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		//Lib.application.window.title = randString(16);
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
 
 		if (FlxG.keys.justPressed.F)
 		{
+			//Lib.application.window.borderless = !Lib.application.window.borderless;
+			//Lib.application.window.maximized = !Lib.application.window.maximized;
+			//Lib.application.window.title = 'lol';
 			FlxG.fullscreen = !FlxG.fullscreen;
+			
 		}
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;

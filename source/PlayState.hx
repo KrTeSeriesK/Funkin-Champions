@@ -41,6 +41,8 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
+import openfl.Lib;
+
 //bloopstuff
 //import flixel.system.FlxAssets;
 
@@ -61,11 +63,7 @@ class PlayState extends MusicBeatState
 	public static var babymode:Bool = true;
 	private var Steppy:Bool = false;
 	
-	public static var screenMode:Bool = false;
-	public static var autoMode:Bool = false;
-	public static var relaxedMode:Bool = false;
-	public static var championsMode:Bool = false;
-	public static var perfectMode:Bool = false;
+	public static var modes:Array<Bool> = [false, false, false, false, false]; //screen, auto, relaxed, champions, perfect 
 
 	var halloweenLevel:Bool = false;
 
@@ -845,7 +843,7 @@ class PlayState extends MusicBeatState
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
 
 		FlxG.fixedTimestep = false;
-		if (!perfectMode)
+		if (!modes[4])
 		{
 			healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar'));
 			healthBarBG.screenCenter(X);
@@ -970,7 +968,14 @@ class PlayState extends MusicBeatState
 					startCountdown();
 			}
 		}
-
+		
+		if (modes[0])
+		{
+			var cinematic:FlxSprite = new FlxSprite(-200,-200).makeGraphic(FlxG.width * 2, FlxG.height * 2, CinematicColorState.cinematicolor);
+			cinematic.scrollFactor.set();
+			add(cinematic);
+		}
+		
 		super.create();
 	}
 
@@ -1504,6 +1509,17 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{	
+	/*
+		#if windows
+		Lib.application.window.move(Lib.application.window.x + FlxG.random.int( -1, 1),Lib.application.window.y + FlxG.random.int( -1, 1));
+		Lib.application.window.title = TitleState.randString(16);
+		Conductor.songPosition += 4;
+		FlxG.sound.music.time += 2;
+		vocals.time -= 3;
+		#end
+	*/
+		if (modes[4] || modes[3])
+			canPause = false;
 		if (FlxG.keys.justPressed.T)
 			FlxG.switchState(new PerfectCertificateState());
 		if (isStoryMode)
@@ -1579,7 +1595,7 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
 
-		if (!perfectMode)
+		if (!modes[4])
 		{
 			scoreTxt.text = "Score:" + songScore;
 			missTxt.text = "Misses:" + missCount;
@@ -1800,7 +1816,7 @@ class PlayState extends MusicBeatState
 		// better streaming of shit
 
 		// RESET = Quick Game Over Screen
-		if (controls.RESET && !perfectMode)
+		if (controls.RESET && !modes[4])
 		{
 			health = 0;
 			trace("RESET = True");
@@ -1941,7 +1957,7 @@ class PlayState extends MusicBeatState
 
 				if (daNote.y < -daNote.height)
 				{
-					if ((daNote.tooLate || !daNote.wasGoodHit) && !(perfectMode && perfect.animation.curAnim.name == 'dies'))
+					if ((daNote.tooLate || !daNote.wasGoodHit) && !(modes[4] && perfect.animation.curAnim.name == 'dies'))
 					{
 						health -= 0.0475;
 						vocals.volume = 0;
@@ -1954,7 +1970,7 @@ class PlayState extends MusicBeatState
 						combo = 0;
 
 						songScore -= 10;
-						if (perfectMode)
+						if (modes[4])
 						{
 							perfect.animation.play('dies');
 						}
@@ -2059,7 +2075,7 @@ class PlayState extends MusicBeatState
 
 				transIn = FlxTransitionableState.defaultTransIn;
 				transOut = FlxTransitionableState.defaultTransOut;
-				if (!perfectMode)
+				if (!modes[4])
 				{
 					TitleState.ChangeTitleSong();
 					FlxG.sound.playMusic(Paths.music(TitleState.Song));
@@ -2482,11 +2498,11 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
-		if (PlayState.babymode && !(perfectMode && perfect.animation.curAnim.name == 'dies'))
+		if (PlayState.babymode && !(modes[4] && perfect.animation.curAnim.name == 'dies'))
 		{
 			if (curStep > 0)
 			{
-				if (perfectMode)
+				if (modes[4])
 				{
 					perfect.animation.play('dies');
 				}
@@ -2521,7 +2537,7 @@ class PlayState extends MusicBeatState
 
 	function badNoteCheck()
 	{
-		if (!(perfectMode && perfect.animation.curAnim.name == 'dies'))
+		if (!(modes[4] && perfect.animation.curAnim.name == 'dies'))
 		{
 			// just double pasting this shit cuz fuk u
 			// REDO THIS SYSTEM!
@@ -2543,7 +2559,7 @@ class PlayState extends MusicBeatState
 
 	function noteCheck(keyP:Bool, note:Note):Void
 	{
-		if (!(perfectMode && perfect.animation.curAnim.name == 'dies'))
+		if (!(modes[4] && perfect.animation.curAnim.name == 'dies'))
 		{
 			if (keyP)
 				goodNoteHit(note);
@@ -2556,7 +2572,7 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
-		if ((!note.wasGoodHit) && (!(perfectMode && perfect.animation.curAnim.name == 'dies')))
+		if ((!note.wasGoodHit) && (!(modes[4] && perfect.animation.curAnim.name == 'dies')))
 		{
 			if (!note.isSustainNote)
 			{
@@ -2580,7 +2596,7 @@ class PlayState extends MusicBeatState
 				case 3:
 					boyfriend.playAnim('singRIGHT', true);
 			}
-			if (perfectMode)
+			if (modes[4])
 			{
 				perfect.animation.play('hit', true);
 				perfect.y = (FlxG.height * 0.9) - 20;
@@ -2758,7 +2774,7 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += 0.03;
 		}
 		
-		if (!perfectMode)
+		if (!modes[4])
 		{
 			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
 			iconP2.setGraphicSize(Std.int(iconP2.width + 30));

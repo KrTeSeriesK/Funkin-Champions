@@ -56,15 +56,35 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.updateHitbox();
 		add(levelDifficulty);
 
+		var Mode:FlxText = new FlxText(20, 15 + 64, 0, "", 32);
+		//gonna get a bit muddy
+		if (PlayState.modes[0] && PlayState.modes[1])
+			Mode.text += 'Screen + Auto Mode';
+		else if (PlayState.modes[0])
+			Mode.text += 'Screen Mode';
+		else if (PlayState.modes[1])
+			Mode.text += 'Auto Mode';
+		else if (PlayState.modes[2])
+			Mode.text += 'Relaxed Mode';
+		else
+			Mode.text += 'FnChampions by Bloops';
+		Mode.scrollFactor.set();
+		Mode.setFormat(Paths.font('vcr.ttf'), 32);
+		Mode.updateHitbox();
+		add(Mode);
+		
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;
+		Mode.alpha = 0;
 
 		levelInfo.x = FlxG.width - (levelInfo.width + 20);
 		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
+		Mode.x = FlxG.width - (Mode.width + 20);
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(levelDifficulty, {alpha: 1, y: levelDifficulty.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.5});
+		FlxTween.tween(Mode, {alpha: 1, y: Mode.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
 
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);

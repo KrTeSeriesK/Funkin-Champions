@@ -89,12 +89,6 @@ class OptionsMenu extends MusicBeatState
 					textMenuoptions[0] = OnOffBool(PlayState.babymode);
 					Refresh();
 				}
-				case "PERFECT MODE":
-				{
-					PlayState.perfectMode = !PlayState.perfectMode;
-					textMenuoptions[1] = OnOffBool(PlayState.perfectMode);
-					Refresh();
-				}
 				case "CHARACTER PREFERENCES":
 				{
 					FlxG.switchState(new CharacterMenuState());

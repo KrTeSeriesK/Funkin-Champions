@@ -986,13 +986,13 @@ class Character extends FlxSprite
 				animation.addByIndices('danceLeft', 'spooky dance idle', [0, 2, 6], "", 12, false);
 				animation.addByIndices('danceRight', 'spooky dance idle', [8, 10, 12, 14], "", 12, false);
 
-				addOffset('danceLeft', -97, -38);
-				addOffset('danceRight', -97, -38);
+				addOffset('danceLeft');
+				addOffset('danceRight');
 
-				addOffset("singUP", -123, 15);
-				addOffset("singRIGHT", -305, -124);
+				addOffset("singUP", -20, 26);
+				addOffset("singRIGHT", -130, -14);
 				addOffset("singLEFT", 130, -10);
-				addOffset("singDOWN", -147, -227);
+				addOffset("singDOWN", -50, -130);
 
 				playAnim('danceRight');
 				
@@ -1006,13 +1006,13 @@ class Character extends FlxSprite
 				animation.addByIndices('danceLeft', 'spooky dance idle', [0, 2, 6], "", 12, false);
 				animation.addByIndices('danceRight', 'spooky dance idle', [8, 10, 12, 14], "", 12, false);
 
-				addOffset('danceLeft');
-				addOffset('danceRight');
+				addOffset('danceLeft', -97, -38);
+				addOffset('danceRight', -97, -38);
 
-				addOffset("singUP", -20, 26);
-				addOffset("singRIGHT", -130, -14);
+				addOffset("singUP", -123, 15);
+				addOffset("singRIGHT", -305, -124);
 				addOffset("singLEFT", 130, -10);
-				addOffset("singDOWN", -50, -130);
+				addOffset("singDOWN", -147, -227);
 
 				playAnim('danceRight');
 				

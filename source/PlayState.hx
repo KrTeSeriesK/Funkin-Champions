@@ -64,6 +64,7 @@ class PlayState extends MusicBeatState
 	private var Steppy:Bool = false;
 	
 	public static var modes:Array<Bool> = [false, false, false, false, false]; //screen, auto, relaxed, champions, perfect 
+	public static var extras:Array<Bool> = [true];
 
 	var halloweenLevel:Bool = false;
 
@@ -72,6 +73,7 @@ class PlayState extends MusicBeatState
 	private var dad:Character;
 	private var gf:Character;
 	private var mom:Character; //ok but, glowy eyes
+	private var mominuse:Bool = false;
 	private var boyfriend:Boyfriend;
 
 	private var notes:FlxTypedGroup<Note>;
@@ -114,6 +116,11 @@ class PlayState extends MusicBeatState
 
 	var halloweenBG:FlxSprite;
 	var isHalloween:Bool = false;
+	var hallowLights:FlxSprite;
+	
+	//BLACOUT MECHANIC - week 2 and 5
+	var blackOut:Bool = false;
+	var blackOutScreen:FlxSprite;
 
 	var phillyCityLights:FlxTypedGroup<FlxSprite>;
 	var phillyCityLightsSrc:FlxTypedGroup<FlxSprite>;
@@ -263,6 +270,13 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
 		#end
+		
+		blackOutScreen = new FlxSprite(-200,-200).makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFF000000);
+		blackOutScreen.scrollFactor.set();
+		blackOutScreen.alpha = 0.9;
+		blackOutScreen.blend = BlendMode.HARDLIGHT;
+		blackOutScreen.visible = false;
+		
 		switch (SONG.song.toLowerCase())
 		{
 			case 'spookeez' | 'south' | 'monster' | 'b-spookeez' | 'b-south':
@@ -271,7 +285,7 @@ class PlayState extends MusicBeatState
 				halloweenLevel = true;
 
 				var hallowTex = Paths.getSparrowAtlas('halloween_bg');
-
+					
 				halloweenBG = new FlxSprite(-400, -70);
 				halloweenBG.frames = hallowTex;
 				halloweenBG.animation.addByPrefix('idle', 'halloweem bg0');
@@ -279,7 +293,31 @@ class PlayState extends MusicBeatState
 				halloweenBG.animation.play('idle');
 				halloweenBG.antialiasing = true;
 				add(halloweenBG);
-
+				
+				hallowLights = new FlxSprite(-400, -70).loadGraphic(Paths.image('Blackout/spooky blackout'));
+				hallowLights.visible = false;
+				hallowLights.alpha = 0.4;
+				hallowLights.blend = BlendMode.DIFFERENCE;
+				add(hallowLights);
+				
+				if (storyWeek == 2)
+				{
+					if (SONG.song == 'Monster')
+					{
+						mom = new Character(100, 100, 'monster-face');
+					}
+					else
+					{
+						mom = new Character(100, 100, 'spooky-pump');
+					}
+				}
+				else if (storyWeek == 9)
+				{
+					mom = new Character(100, 100, 'spooky-skid');
+				}
+				
+				mominuse = true;
+				
 				isHalloween = true;
 			}
 			case 'pico' | 'philly-nice' | 'blammed' | 'b-pico' | 'b-philly-nice' | 'b-blammed':		
@@ -351,6 +389,7 @@ class PlayState extends MusicBeatState
 					overlayShit = new FlxSprite(-500, -600).loadGraphic(Paths.image('limo/limoOverlayDusk'));
 					overlayShit.blend = BlendMode.HARDLIGHT;
 					mom = new Character(100, 100, 'mom-car-eyes');
+					mominuse = true;
 					overlayShit.alpha = 0.5;
 				}
 				else
@@ -786,15 +825,10 @@ class PlayState extends MusicBeatState
 		add(boyfriend);
 		
 		if (curStage == 'limo') //even better, i know
+		{
 			if (!SONG.song.endsWith('Panties'))
 				add(overlayShit);
-			if (SONG.player2.startsWith('mom-car') && SONG.song.endsWith('Milf'))
-			{
-				mom.blend = BlendMode.ADD;
-				mom.alpha = 0.7;
-				add(mom);
-			}
-			
+		}			
 			
 		if (isStoryMode)
 		{
@@ -981,6 +1015,17 @@ class PlayState extends MusicBeatState
 			add(cinematic);
 		}
 		
+		add(blackOutScreen);
+		
+		if (mominuse)
+		{
+			mom.x = dad.x;
+			mom.y = dad.y;
+			mom.blend = BlendMode.ADD;
+			mom.alpha = 0.7;
+			add(mom);
+		}
+		
 		super.create();
 	}
 
@@ -1099,7 +1144,7 @@ class PlayState extends MusicBeatState
 			dad.dance();
 			gf.dance();
 			boyfriend.dance();
-			if (SONG.player2.startsWith('mom-car') && SONG.song.endsWith('Milf'))
+			if (mominuse)
 				mom.dance();
 			
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
@@ -1894,6 +1939,10 @@ class PlayState extends MusicBeatState
 				}
 
 				daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
+				if (blackOutScreen.visible && daNote.y <= (FlxG.height/4)*3)
+					daNote.alpha -= daNote.alpha / 15;
+				else
+					daNote.alpha = 1;
 
 				// i am so fucking sorry for this if condition
 				if (daNote.isSustainNote
@@ -1950,7 +1999,7 @@ class PlayState extends MusicBeatState
 						}
 					}
 					#end
-					if (SONG.player2.startsWith('mom-car') && SONG.song.endsWith('Milf'))
+					if (mominuse)
 					{
 						switch (Math.abs(daNote.noteData))
 						{
@@ -1974,7 +2023,7 @@ class PlayState extends MusicBeatState
 					});
 
 					dad.holdTimer = 0;
-					if (SONG.player2.startsWith('mom-car') && SONG.song.endsWith('Milf'))
+					if (mominuse)
 						mom.holdTimer = 0;
 
 					if (SONG.needsVoices)
@@ -2740,6 +2789,16 @@ class PlayState extends MusicBeatState
 
 		boyfriend.playAnim('scared', true);
 		gf.playAnim('scared', true);
+		
+		if (extras[0])
+		{
+			blackOut = !blackOut;
+			blackOutScreen.visible = !blackOutScreen.visible;
+			if (isHalloween)
+			{
+				hallowLights.visible = !hallowLights.visible;
+			}
+		}
 	}
 
 	override function stepHit()
@@ -2784,7 +2843,7 @@ class PlayState extends MusicBeatState
 			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
 			{
 				dad.dance();
-				if (SONG.player2.startsWith('mom-car') && SONG.song.endsWith('Milf'))
+				if (mominuse)
 					mom.dance();
 			}
 		}

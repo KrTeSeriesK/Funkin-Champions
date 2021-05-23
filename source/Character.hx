@@ -200,6 +200,27 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -50, -130);
 
 				playAnim('danceRight');
+				
+			case 'spooky-pump':
+				tex = Paths.getSparrowAtlas('Blackout/Blackout_Pump');
+				frames = tex;
+				animation.addByPrefix('singUP', 'spooky UP NOTE', 24, false);
+				animation.addByPrefix('singDOWN', 'sorry nothing', 24, false);
+				animation.addByPrefix('singLEFT', 'sorry nothing', 24, false);
+				animation.addByPrefix('singRIGHT', 'spooky sing right', 24, false);
+				animation.addByIndices('danceLeft', 'spooky dance idle', [0, 2, 6], "", 12, false);
+				animation.addByIndices('danceRight', 'spooky dance idle', [8, 10, 12, 14], "", 12, false);
+
+				addOffset('danceLeft', -214, -256);
+				addOffset('danceRight', -214, -257);
+
+				addOffset("singUP", -212, -223);
+				addOffset("singRIGHT", -311, -292);
+				addOffset("singLEFT", 130, -10);
+				addOffset("singDOWN", -50, -130);
+
+				playAnim('danceRight');
+				
 			case 'mom':
 				tex = Paths.getSparrowAtlas('Mom_Assets');
 				frames = tex;
@@ -295,6 +316,23 @@ class Character extends FlxSprite
 				addOffset("singLEFT", -30, 10);
 				addOffset("singDOWN", -30, -90);
 				playAnim('idle');
+				
+			case 'monster-face':
+				tex = Paths.getSparrowAtlas('Blackout/MonsterFace');
+				frames = tex;
+				animation.addByPrefix('idle', 'monster idle', 24, true);
+				animation.addByPrefix('singUP', 'monster up note', 24, false);
+				animation.addByPrefix('singDOWN', 'monster down', 24, false);
+				animation.addByPrefix('singLEFT', 'Monster left note', 24, false);
+				animation.addByPrefix('singRIGHT', 'Monster Right note', 24, false);
+
+				addOffset('idle', -157, -47);
+				addOffset("singUP", -131, 90);
+				addOffset("singRIGHT", -104, -70);
+				addOffset("singLEFT", -182, -32);
+				addOffset("singDOWN", -164, -181);
+				playAnim('idle');
+				
 			case 'monster-christmas':
 				tex = Paths.getSparrowAtlas('christmas/monsterChristmas');
 				frames = tex;
@@ -948,6 +986,26 @@ class Character extends FlxSprite
 				animation.addByIndices('danceLeft', 'spooky dance idle', [0, 2, 6], "", 12, false);
 				animation.addByIndices('danceRight', 'spooky dance idle', [8, 10, 12, 14], "", 12, false);
 
+				addOffset('danceLeft', -97, -38);
+				addOffset('danceRight', -97, -38);
+
+				addOffset("singUP", -123, 15);
+				addOffset("singRIGHT", -305, -124);
+				addOffset("singLEFT", 130, -10);
+				addOffset("singDOWN", -147, -227);
+
+				playAnim('danceRight');
+				
+			case 'spooky-skid':
+				tex = Paths.getSparrowAtlas('Blackout/Blackout_BSkid');
+				frames = tex;
+				animation.addByPrefix('singUP', 'spooky UP NOTE', 24, false);
+				animation.addByPrefix('singDOWN', 'spooky DOWN note', 24, false);
+				animation.addByPrefix('singLEFT', 'sorry nothing', 24, false);
+				animation.addByPrefix('singRIGHT', 'spooky sing right', 24, false);
+				animation.addByIndices('danceLeft', 'spooky dance idle', [0, 2, 6], "", 12, false);
+				animation.addByIndices('danceRight', 'spooky dance idle', [8, 10, 12, 14], "", 12, false);
+
 				addOffset('danceLeft');
 				addOffset('danceRight');
 
@@ -957,6 +1015,7 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -50, -130);
 
 				playAnim('danceRight');
+				
 			case 'mom-bsides':
 				tex = Paths.getSparrowAtlas('bsides/Mom_Assets');
 				frames = tex;
@@ -1572,7 +1631,7 @@ class Character extends FlxSprite
 							playAnim('danceLeft');
 					}
 
-				case 'spooky' | 'spooky-bsides':
+				case 'spooky' | 'spooky-bsides' | 'spooky-pump' | 'spooky-skid':
 					danced = !danced;
 
 					if (danced)

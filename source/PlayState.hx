@@ -159,6 +159,11 @@ class PlayState extends MusicBeatState
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
+	
+	#if !html5
+	var dx:Int = Lib.application.window.x;
+	var dy:Int = Lib.application.window.y;
+	#end
 
 	override public function create()
 	{
@@ -1519,6 +1524,14 @@ class PlayState extends MusicBeatState
 		vocals.time -= 3;
 		#end
 	*/
+		#if !html5
+		if (curSong.endsWith('Thorns'))
+		{
+			Lib.application.window.move(Lib.application.window.x + Std.int((Lib.application.window.x - dx) /-10) ,Lib.application.window.y + Std.int((Lib.application.window.y - dy) / -10));
+			trace(Lib.application.window.x);
+			trace(Lib.application.window.y);
+		}
+		#end
 		if (modes[4] || modes[3])
 			canPause = false;
 		if (FlxG.keys.justPressed.T)
@@ -1921,6 +1934,22 @@ class PlayState extends MusicBeatState
 						case 3:
 							dad.playAnim('singRIGHT' + altAnim, true);
 					}
+					#if !html5
+					if (curSong.endsWith('Thorns'))
+					{
+						switch (Math.abs(daNote.noteData))
+						{
+							case 0:
+								Lib.application.window.move(Lib.application.window.x - 25 ,Lib.application.window.y);
+							case 1:
+								Lib.application.window.move(Lib.application.window.x,Lib.application.window.y + 25);
+							case 2:
+								Lib.application.window.move(Lib.application.window.x,Lib.application.window.y - 25 );
+							case 3:
+								Lib.application.window.move(Lib.application.window.x + 25,Lib.application.window.y);
+						}
+					}
+					#end
 					if (SONG.player2.startsWith('mom-car') && SONG.song.endsWith('Milf'))
 					{
 						switch (Math.abs(daNote.noteData))

@@ -140,6 +140,8 @@ class PlayState extends MusicBeatState
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var roseBeat:Int = 0;
+	
+	var sprinkles:FlxSprite;
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
@@ -294,11 +296,15 @@ class PlayState extends MusicBeatState
 				halloweenBG.antialiasing = true;
 				add(halloweenBG);
 				
-				hallowLights = new FlxSprite(-400, -70).loadGraphic(Paths.image('Blackout/spooky blackout'));
-				hallowLights.visible = false;
-				hallowLights.alpha = 0.4;
-				hallowLights.blend = BlendMode.DIFFERENCE;
-				add(hallowLights);
+				
+				if (extras[0])
+				{
+					blackOutScreen.visible = true;
+					hallowLights = new FlxSprite(-400, -70).loadGraphic(Paths.image('Blackout/spooky blackout'));
+					hallowLights.alpha = 0.5;
+					hallowLights.blend = BlendMode.DIFFERENCE;
+					add(hallowLights);
+				}
 				
 				if (storyWeek == 2)
 				{
@@ -639,10 +645,38 @@ class PlayState extends MusicBeatState
 				 */
 			}
 			case 'ugh' | 'guns' | 'stress':
-				curStage = 'tankmen';
+			
+				curStage = 'tank';
 				
-				var yellow:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xFFffd700);
-				yellow.scrollFactor.set();
+				defaultCamZoom = 0.9;
+				
+				var sky = new FlxSprite(-400,-400).loadGraphic(Paths.image('paintmen/sky'));
+				add(sky);
+				
+				var mountains = new FlxSprite(-300,-20).loadGraphic(Paths.image('paintmen/mountains'));
+				mountains.scrollFactor.set(0.2,0.2);
+				mountains.setGraphicSize(Std.int(mountains.width * 1.2));
+				mountains.updateHitbox();
+				add(mountains);
+				
+				var buildings = new FlxSprite(-200,0).loadGraphic(Paths.image('paintmen/buildings'));
+				buildings.scrollFactor.set(0.35, 0.35);
+				buildings.setGraphicSize(Std.int(buildings.width * 1.2));
+				buildings.updateHitbox();
+				add(buildings);
+				
+				sprinkles = new FlxSprite(100,0);
+				sprinkles.scrollFactor.set(0.35, 0.35);
+				sprinkles.frames = Paths.getSparrowAtlas('paintmen/SkittlesWatchtower');
+				sprinkles.animation.addByPrefix('idle', 'Sprinkles Watchtower bop', 30, false);
+				sprinkles.animation.play('idle');
+				add(sprinkles);
+				
+				var floor = new FlxSprite(-420,-150).loadGraphic(Paths.image('paintmen/floor'));
+				floor.setGraphicSize(Std.int(floor.width * 1.15));
+				floor.updateHitbox();
+				add(floor);
+				
 				
 			default:
 			{
@@ -1557,7 +1591,29 @@ class PlayState extends MusicBeatState
 	private var paused:Bool = false;
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
-
+	
+	function restoreDarkness()
+	{
+		if (!blackOutScreen.visible)
+		{
+			blackOutScreen.visible = true;
+			blackOutScreen.alpha = 0;
+			if (isHalloween)
+			{
+				hallowLights.visible = true;
+				hallowLights.alpha = 0;
+			}
+		}
+		else
+		{
+			blackOutScreen.alpha += (blackOutScreen.alpha - 0.9) /-20;
+			if (isHalloween)
+			{
+				hallowLights.alpha += (hallowLights.alpha - 0.9) /-20;
+			}
+		}
+	}
+	
 	override public function update(elapsed:Float)
 	{	
 	/*
@@ -1577,6 +1633,17 @@ class PlayState extends MusicBeatState
 			trace(Lib.application.window.y);
 		}
 		#end
+		if (extras[0])
+		{
+			if (isHalloween)
+			{
+				if (halloweenBG.animation.curAnim.name == 'lightning' && halloweenBG.animation.curAnim.finished)
+				{
+					restoreDarkness();
+				}
+			}
+		}
+		
 		if (modes[4] || modes[3])
 			canPause = false;
 		if (FlxG.keys.justPressed.T)
@@ -1940,7 +2007,7 @@ class PlayState extends MusicBeatState
 
 				daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
 				if (blackOutScreen.visible && daNote.y <= (FlxG.height/4)*3)
-					daNote.alpha -= daNote.alpha / 15;
+					daNote.alpha -= daNote.alpha / 13;
 				else
 					daNote.alpha = 1;
 
@@ -2792,11 +2859,10 @@ class PlayState extends MusicBeatState
 		
 		if (extras[0])
 		{
-			blackOut = !blackOut;
-			blackOutScreen.visible = !blackOutScreen.visible;
+			blackOutScreen.visible = false;
 			if (isHalloween)
 			{
-				hallowLights.visible = !hallowLights.visible;
+				hallowLights.visible = false;
 			}
 		}
 	}
@@ -2925,6 +2991,14 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
+			case 'tank':
+				sprinkles.animation.play('idle', true);
+				var sdfgkjh = new FlxSprite(-420, 300);
+				sdfgkjh.frames = Paths.getSparrowAtlas('paintmen/SteveTank');
+				sdfgkjh.animation.addByPrefix('idle', 'sbeve tack', 30, true);
+				sdfgkjh.animation.play('idle');
+				sdfgkjh.velocity.x = sdfgkjh.width*2.5;
+				add(sdfgkjh);
 			case 'school':
 				bgGirls.dance();
 

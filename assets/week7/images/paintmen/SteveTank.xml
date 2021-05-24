@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="SteveTank.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sbeve tack0000" x="2" y="2" width="296" height="321" frameX="0" frameY="-18" frameWidth="296" frameHeight="341"/>
+	<SubTexture name="sbeve tack0001" x="2" y="2" width="296" height="321" frameX="0" frameY="-18" frameWidth="296" frameHeight="341"/>
+	<SubTexture name="sbeve tack0002" x="2" y="2" width="296" height="321" frameX="0" frameY="-18" frameWidth="296" frameHeight="341"/>
+	<SubTexture name="sbeve tack0003" x="303" y="2" width="296" height="341"/>
+	<SubTexture name="sbeve tack0004" x="303" y="2" width="296" height="341"/>
+	<SubTexture name="sbeve tack0005" x="303" y="2" width="296" height="341"/>
+	<SubTexture name="sbeve tack0006" x="604" y="2" width="296" height="335" frameX="0" frameY="-6" frameWidth="296" frameHeight="341"/>
+	<SubTexture name="sbeve tack0007" x="604" y="2" width="296" height="335" frameX="0" frameY="-6" frameWidth="296" frameHeight="341"/>
+	<SubTexture name="sbeve tack0008" x="604" y="2" width="296" height="335" frameX="0" frameY="-6" frameWidth="296" frameHeight="341"/>
+</TextureAtlas>

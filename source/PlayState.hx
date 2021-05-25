@@ -142,6 +142,7 @@ class PlayState extends MusicBeatState
 	var roseBeat:Int = 0;
 	
 	var sprinkles:FlxSprite;
+	var tackDrive:FlxSprite;
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
@@ -671,6 +672,12 @@ class PlayState extends MusicBeatState
 				sprinkles.animation.addByPrefix('idle', 'Sprinkles Watchtower bop', 30, false);
 				sprinkles.animation.play('idle');
 				add(sprinkles);
+				
+				tackDrive = new FlxSprite(300, 300);
+				tackDrive.scrollFactor.set(0.5, 0.5);
+				tackDrive.frames = Paths.getSparrowAtlas('paintmen/SteveTank');
+                tackDrive.animation.addByPrefix('idle', 'sbeve tack', 30, true);
+                tackDrive.animation.play('idle');
 				
 				var floor = new FlxSprite(-420,-150).loadGraphic(Paths.image('paintmen/floor'));
 				floor.setGraphicSize(Std.int(floor.width * 1.15));
@@ -2791,7 +2798,19 @@ class PlayState extends MusicBeatState
 			resetFastCar();
 		});
 	}
-
+	
+/*         moveTank: function() {
+                    this.inCutscene || (this.tankAngle += k.elapsed * this.tankSpeed,
+                    this.tankGround.set_angle(this.tankAngle - 90 + 15),
+                    this.tankGround.set_x(this.tankX + 1500 * Math.cos(Math.PI / 180 * (1 * this.tankAngle + 180))),
+                    this.tankGround.set_y(1300 + 1100 * Math.sin(Math.PI / 180 * (1 * this.tankAngle + 180))))
+                },
+				
+	function moveTank()
+	{
+		
+	}
+*/
 	var trainMoving:Bool = false;
 	var trainFrameTiming:Float = 0;
 
@@ -2993,12 +3012,6 @@ class PlayState extends MusicBeatState
 		{
 			case 'tank':
 				sprinkles.animation.play('idle', true);
-				var sdfgkjh = new FlxSprite(-420, 300);
-				sdfgkjh.frames = Paths.getSparrowAtlas('paintmen/SteveTank');
-				sdfgkjh.animation.addByPrefix('idle', 'sbeve tack', 30, true);
-				sdfgkjh.animation.play('idle');
-				sdfgkjh.velocity.x = sdfgkjh.width*2.5;
-				add(sdfgkjh);
 			case 'school':
 				bgGirls.dance();
 

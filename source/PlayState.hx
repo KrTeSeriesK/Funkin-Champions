@@ -1049,13 +1049,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 		
-		if (modes[0])
-		{
-			var cinematic:FlxSprite = new FlxSprite(-200,-200).makeGraphic(FlxG.width * 2, FlxG.height * 2, CinematicColorState.cinematicolor);
-			cinematic.scrollFactor.set();
-			add(cinematic);
-		}
-		
 		add(blackOutScreen);
 		
 		if (mominuse)
@@ -1065,6 +1058,13 @@ class PlayState extends MusicBeatState
 			mom.blend = BlendMode.ADD;
 			mom.alpha = 0.7;
 			add(mom);
+		}
+		
+		if (modes[0])
+		{
+			var cinematic:FlxSprite = new FlxSprite(-200,-200).makeGraphic(FlxG.width * 2, FlxG.height * 2, CinematicColorState.cinematicolor);
+			cinematic.scrollFactor.set();
+			add(cinematic);
 		}
 		
 		super.create();

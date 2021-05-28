@@ -457,7 +457,7 @@ class TitleState extends MusicBeatState
 				addMoreText('Night');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Champtions'); // credTextShit.text += '\nFunkin';
+				addMoreText('Champions'); // credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();

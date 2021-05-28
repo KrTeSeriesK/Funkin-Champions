@@ -649,31 +649,33 @@ class PlayState extends MusicBeatState
 			
 				curStage = 'tank';
 				
-				defaultCamZoom = 0.9;
+				defaultCamZoom = 0.8;
 				
-				var sky = new FlxSprite(-400,-400).loadGraphic(Paths.image('paintmen/sky'));
+				var sky = new FlxSprite(-450,0).loadGraphic(Paths.image('paintmen/sky'));
+				sky.setGraphicSize(Std.int(sky.width * 1.2));
+				sky.updateHitbox();
 				add(sky);
 				
-				var mountains = new FlxSprite(-300,-20).loadGraphic(Paths.image('paintmen/mountains'));
+				var mountains = new FlxSprite(-200,-20).loadGraphic(Paths.image('paintmen/mountains'));
 				mountains.scrollFactor.set(0.2,0.2);
 				mountains.setGraphicSize(Std.int(mountains.width * 1.2));
 				mountains.updateHitbox();
 				add(mountains);
 				
-				var buildings = new FlxSprite(-200,0).loadGraphic(Paths.image('paintmen/buildings'));
+				var buildings = new FlxSprite(-600,-100).loadGraphic(Paths.image('paintmen/buildings'));
 				buildings.scrollFactor.set(0.35, 0.35);
 				buildings.setGraphicSize(Std.int(buildings.width * 1.2));
 				buildings.updateHitbox();
 				add(buildings);
 				
-				sprinkles = new FlxSprite(100,0);
+				sprinkles = new FlxSprite(0,-50);
 				sprinkles.scrollFactor.set(0.35, 0.35);
 				sprinkles.frames = Paths.getSparrowAtlas('paintmen/SkittlesWatchtower');
 				sprinkles.animation.addByPrefix('idle', 'Sprinkles Watchtower bop', 30, false);
 				sprinkles.animation.play('idle');
 				add(sprinkles);
 				
-				tackDrive = new FlxSprite(300, 300);
+				tackDrive = new FlxSprite(-420, 350);
 				tackDrive.scrollFactor.set(0.5, 0.5);
 				tackDrive.frames = Paths.getSparrowAtlas('paintmen/SteveTank');
                 tackDrive.animation.addByPrefix('idle', 'sbeve tack', 30, true);
@@ -728,7 +730,7 @@ class PlayState extends MusicBeatState
 		}
 		switch (storyWeek)
 		{
-			case 7|8|9|10:
+			case 8|9|10:
 				gfVersion = 'gf-bsides';
 			case 13:
 				gfVersion = 'gf-pixel-bsides';
@@ -782,6 +784,7 @@ class PlayState extends MusicBeatState
 				dad.y += 100;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'holo' | 'tankman':
+				camPos.set(dad.getGraphicMidpoint().x + 150, dad.getGraphicMidpoint().y + 250);
 				dad.y += 100;
 			
 		}
@@ -795,7 +798,7 @@ class PlayState extends MusicBeatState
 					CharacterSuffix = '-christmas';
 				case 6:
 					CharacterSuffix = '-pixel';
-				case 7|8|9|10:
+				case 8|9|10:
 					CharacterSuffix = '-bsides';
 				case 11:
 					CharacterSuffix = '-car-bsides';

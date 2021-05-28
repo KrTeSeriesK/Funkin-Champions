@@ -39,6 +39,9 @@ class GameOverSubstate extends MusicBeatSubstate
 				CharSoundSuffix = '-pico';
 			case 'bf-dylan':
 				daBf = 'bf-dylan-dead';
+			case 'bf-bloops':
+				daBf = 'bf-bloops-dead';
+				CharSoundSuffix = '-bloops';
 			default:
 				daBf = 'bf';
 		}

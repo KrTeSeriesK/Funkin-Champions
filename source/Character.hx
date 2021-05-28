@@ -411,7 +411,39 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				flipX = true;
-			
+			case 'bf-bloops-dead':
+				tex = Paths.getSparrowAtlas('bloops/BloopsDead');
+				frames = tex;
+				
+				animation.addByPrefix('idle', 'Bloops Dead0001', 24, false);
+				animation.addByPrefix('firstDeath', 'Bloops Dead0', 24, false);
+				animation.addByPrefix('deathLoop', 'Bloops Dead loop', 24, true);
+				animation.addByPrefix('deathConfirm', 'Bloops Dead0041', 24, false);
+				
+				addOffset('firstDeath', 311, 44);
+				addOffset('idle', 311, 44);
+				addOffset('deathLoop', 290, -220);
+				addOffset('deathConfirm', 311, 44);
+				
+				playAnim('firstDeath');
+				flipX = true;
+			case 'bf-bloops-dead-bsides':
+				tex = Paths.getSparrowAtlas('bsides/BSidesBloopsDead');
+				frames = tex;
+				
+				animation.addByPrefix('idle', 'Bloops Dead0001', 24, false);
+				animation.addByPrefix('firstDeath', 'Bloops Dead0', 24, false);
+				animation.addByPrefix('deathLoop', 'Bloops Dead loop', 24, true);
+				animation.addByPrefix('deathConfirm', 'Bloops Dead0041', 24, false);
+				
+				addOffset('firstDeath', 311, 44);
+				addOffset('idle', 311, 44);
+				addOffset('deathLoop', 290, -220);
+				addOffset('deathConfirm', 311, 44);
+				
+				playAnim('firstDeath');
+				
+				flipX = true;
 			case 'bf-bloops':
 				tex = Paths.getSparrowAtlas('bloops/Bloops');
 				frames = tex;

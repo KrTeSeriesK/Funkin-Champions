@@ -104,7 +104,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			case 6:
 				CurPlayerArray = 1;
-			case 7|8|9|10|11|12:
+			case 8|9|10|11|12:
 				CurPlayerArray = 2;
 			case 13:
 				CurPlayerArray = 3;

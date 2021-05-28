@@ -11,6 +11,8 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.tweens.FlxTween;
 
 class OptionsMenu extends MusicBeatState
 {
@@ -33,11 +35,13 @@ class OptionsMenu extends MusicBeatState
 	var textMenuoptions:Array<Dynamic> = ['', '', '', ''];
 
 	var grpOptionsTexts:FlxTypedGroup<Alphabet>;
+	public static var oldmenucolor = 0xFF7289da;
+	public static var newmenucolor = 0xFF7289da;
 	
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		menuBG.color = 0xFF7289da;
+		//menuBG.color = 0xFF7289da;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -49,6 +53,16 @@ class OptionsMenu extends MusicBeatState
 		textMenuoptions[0] = OnOffBool(PlayState.babymode);
 		makeOptionsText();
 		changeSelection(0);
+		
+		FlxTransitionableState.skipNextTransIn = true;
+		FlxTransitionableState.skipNextTransOut = true;
+		OptionsMenu.newmenucolor = 0xFF7289da;
+		FlxTween.color(menuBG, 0.6, OptionsMenu.oldmenucolor, OptionsMenu.newmenucolor,{
+			onComplete: function(t:FlxTween)
+			{
+				OptionsMenu.oldmenucolor = 0xFF7289da;
+			}
+		});
 	}
 	function Refresh()
 	{
@@ -72,6 +86,7 @@ class OptionsMenu extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		
 		if (controls.BACK)
 			FlxG.switchState(new MainMenuState());
 		if (controls.UP_P)

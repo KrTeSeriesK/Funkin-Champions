@@ -9,6 +9,8 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.animation.FlxBaseAnimation;
 import flixel.math.FlxMath;
 import flixel.util.FlxTimer;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.tweens.FlxTween;
 
 using StringTools;
 
@@ -81,7 +83,7 @@ class CharacterSelectState extends MusicBeatState
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		menuBG.color = 0xFFff9cff;
+		//menuBG.color = 0xFFff9cff;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -144,6 +146,18 @@ class CharacterSelectState extends MusicBeatState
 			Player.updateHitbox();
 			Player.antialiasing = false;
 		}
+		
+		FlxTransitionableState.skipNextTransIn = true;
+		FlxTransitionableState.skipNextTransOut = true;
+		
+		OptionsMenu.newmenucolor = 0xFFff9cff;
+		FlxTween.color(menuBG, 0.6, OptionsMenu.oldmenucolor, OptionsMenu.newmenucolor,{
+			onComplete: function(t:FlxTween)
+			{
+				OptionsMenu.oldmenucolor = 0xFFff9cff;
+			}
+		});
+
 	}
 	override function update(elapsed:Float)
 	{

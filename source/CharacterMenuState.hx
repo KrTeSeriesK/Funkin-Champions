@@ -6,7 +6,8 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.math.FlxMath;
-
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.tweens.FlxTween;
 
 class CharacterMenuState extends MusicBeatState
 {
@@ -32,7 +33,7 @@ class CharacterMenuState extends MusicBeatState
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		menuBG.color = 0xFF83beec;
+		//menuBG.color = 0xFF83beec;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -43,13 +44,25 @@ class CharacterMenuState extends MusicBeatState
 		
 		makePlayerText();
 		changeSelection(0);
+		
+		OptionsMenu.newmenucolor = 0xFF83beec;
+		FlxTween.color(menuBG, 0.6, OptionsMenu.oldmenucolor, OptionsMenu.newmenucolor,{
+			onComplete: function(t:FlxTween)
+			{
+				OptionsMenu.oldmenucolor = 0xFF83beec;
+			}
+		});
 	}
 	
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 		if (controls.BACK)
+		{
+			FlxTransitionableState.skipNextTransIn = true;
+			FlxTransitionableState.skipNextTransOut = true;
 			FlxG.switchState(new OptionsMenu());
+		}
 		if (controls.UP_P)
 			changeSelection(-1);
 		if (controls.DOWN_P)

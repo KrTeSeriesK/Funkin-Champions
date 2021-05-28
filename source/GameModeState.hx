@@ -11,6 +11,8 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.tweens.FlxTween;
 
 class GameModeState extends MusicBeatState
 {
@@ -33,7 +35,7 @@ class GameModeState extends MusicBeatState
         super.create();
 		
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		menuBG.color = 0xFF9e102c;
+		//menuBG.color = 0xFF9e102c;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -47,7 +49,16 @@ class GameModeState extends MusicBeatState
 		makeOptionsText();
 		changeSelection(0);
 		
+		FlxTransitionableState.skipNextTransIn = true;
+		FlxTransitionableState.skipNextTransOut = true;
 		
+		OptionsMenu.newmenucolor = 0xFF9e102c;
+		FlxTween.color(menuBG, 0.6, OptionsMenu.oldmenucolor, OptionsMenu.newmenucolor,{
+			onComplete: function(t:FlxTween)
+			{
+				OptionsMenu.oldmenucolor = 0xFF9e102c;
+			}
+		});
     }
 	
 	function makeOptionsText()

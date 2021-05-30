@@ -66,7 +66,7 @@ class PlayState extends MusicBeatState
 	public static var modes:Array<Bool> = [false, false, false, false, false]; //screen, auto, relaxed, champions, perfect 
 	public static var extras:Array<Bool> = [true];
 
-	var halloweenLevel:Bool = false;
+	var halloweenLevel:Bool = false; 
 
 	private var vocals:FlxSound;
 
@@ -149,6 +149,8 @@ class PlayState extends MusicBeatState
 	var missCount:Int = 0;
 	var scoreTxt:FlxText;
 	var missTxt:FlxText;
+	var SHITTxt:FlxText;
+	private var scores:Array<Int> = [0, 0, 0, 0];
 	
 	public static var campaignScore:Int = 0;
 
@@ -963,8 +965,14 @@ class PlayState extends MusicBeatState
 			missTxt.scrollFactor.set();
 			add(missTxt);
 			
+			SHITTxt = new FlxText(healthBarBG.x + (healthBarBG.width/2 - 50), healthBarBG.y + 30, 0, "", 20);
+			SHITTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+			SHITTxt.scrollFactor.set();
+			add(SHITTxt); 
+			
 			scoreTxt.cameras = [camHUD];
 			missTxt.cameras = [camHUD];
+			SHITTxt.cameras = [camHUD];
 		}
 		else
 		{
@@ -1730,11 +1738,11 @@ class PlayState extends MusicBeatState
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
-
 		if (!modes[4])
 		{
 			scoreTxt.text = "Score:" + songScore;
 			missTxt.text = "Misses:" + missCount;
+			SHITTxt.text = scores[0]+'|'+scores[1]+'|'+scores[2]+'|'+scores[3];
 		
 			var iconOffset:Int = 26;
 
@@ -2327,14 +2335,21 @@ class PlayState extends MusicBeatState
 		if (noteDiff > Conductor.safeZoneOffset * 0.9)
 		{
 			daRating = 'shit';
+			scores[3]++;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.75)
 		{
 			daRating = 'bad';
+			scores[2]++;
 		}
 		else if (noteDiff > Conductor.safeZoneOffset * 0.2)
 		{
 			daRating = 'good';
+			scores[1]++;
+		}
+		else
+		{	
+			scores[0]++;
 		}
 
 		songScore += score;

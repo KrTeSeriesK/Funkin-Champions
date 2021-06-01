@@ -85,44 +85,7 @@ class FreeplayState extends MusicBeatState
 		#end
 		
 		//addWeek(['champions-test'], 0, ['holo']);
-		addWeek(['Ugh', 'Guns', 'Stress'], 7, ['tankman']);
-		
-		if (StoryMenuState.weekUnlocked[2] || isDebug)
-			addWeek(['Bopeebo', 'Fresh', 'Dadbattle'], 1, ['dad']);
-
-		if (StoryMenuState.weekUnlocked[2] || isDebug)
-			addWeek(['Spookeez', 'South', 'Monster'], 2, ['spooky', 'spooky', 'monster']);
-
-		if (StoryMenuState.weekUnlocked[3] || isDebug)
-			addWeek(['Pico', 'Philly-Nice', 'Blammed'], 3, ['pico']);
-
-		if (StoryMenuState.weekUnlocked[4] || isDebug)
-			addWeek(['Satin-Panties', 'High', 'Milf'], 4, ['mom']);
-
-		if (StoryMenuState.weekUnlocked[5] || isDebug)
-			addWeek(['Cocoa', 'Eggnog', 'Winter-Horrorland'], 5, ['parents-christmas', 'parents-christmas', 'monster-christmas']);
-		
-		if (StoryMenuState.weekUnlocked[6] || isDebug)
-			addWeek(['Senpai', 'Roses', 'Thorns'], 6, ['senpai', 'senpai-angry', 'spirit']);
-		
-		if (StoryMenuState.weekUnlocked[8] || isDebug)
-			addWeek(['B-Bopeebo', 'B-Fresh', 'B-Dadbattle'], 8, ['dad-bsides']);
-
-		if (StoryMenuState.weekUnlocked[9] || isDebug)
-			addWeek(['B-Spookeez', 'B-South'], 9, ['spooky-bsides']);
-
-		if (StoryMenuState.weekUnlocked[10] || isDebug)
-			addWeek(['B-Pico', 'B-Philly-Nice', 'B-Blammed'], 10, ['pico-bsides']);
-
-		if (StoryMenuState.weekUnlocked[11] || isDebug)
-			addWeek(['B-Satin-Panties', 'B-High', 'B-Milf'], 11, ['mom-bsides']);
-
-		if (StoryMenuState.weekUnlocked[12] || isDebug)
-			addWeek(['B-Cocoa', 'B-Eggnog', 'B-Winter-Horrorland'], 12, ['parents-christmas-bsides', 'parents-christmas-bsides', 'monster-christmas-bsides']);
-		
-		if (StoryMenuState.weekUnlocked[13] || isDebug)
-			addWeek(['B-Senpai', 'B-Roses', 'B-Thorns'], 13, ['senpai-bsides', 'senpai-angry-bsides', 'spirit-bsides']);
-
+		addWeek(['Genesis', 'Bitcrush'], 1, ['mickle']);
 		// LOAD MUSIC
 
 		// LOAD CHARACTERS

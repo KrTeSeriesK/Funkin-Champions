@@ -181,6 +181,23 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 0, -30);
 
 				playAnim('idle');
+			case 'mickle':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('mickle');
+				frames = tex;
+				animation.addByPrefix('idle', 'Mickle idle dance', 24,false);
+				animation.addByPrefix('singUP', 'Mickle Sing Note UP', 24);
+				animation.addByPrefix('singRIGHT', 'Mickle Sing Note RIGHT', 24);
+				animation.addByPrefix('singDOWN', 'Mickle Sing Note DOWN', 24);
+				animation.addByPrefix('singLEFT', 'Mickle Sing Note LEFT', 24);
+
+				addOffset('idle');
+				addOffset("singUP", -6, 50);
+				addOffset("singRIGHT", 0, 27);
+				addOffset("singLEFT", -10, 10);
+				addOffset("singDOWN", 0, -30);
+
+				playAnim('idle');
 			case 'spooky':
 				tex = Paths.getSparrowAtlas('spooky_kids_assets');
 				frames = tex;

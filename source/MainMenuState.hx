@@ -3,10 +3,6 @@ package;
 #if windows
 import Discord.DiscordClient;
 #end
-
-#if newgrounds
-import io.newgrounds.NG;
-#end
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -109,9 +105,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-
-		// NG.core.calls.event.logEvent('swag').send();
-
+		
 		changeItem();
 		
 		timestamp = new FlxText(FlxG.width/2 - 50, FlxG.height - 50, 0, 'shdighisu', 20);

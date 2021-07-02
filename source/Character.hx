@@ -175,27 +175,81 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'Dad Sing Note LEFT', 24);
 
 				addOffset('idle');
-				addOffset("singUP", -6, 50);
-				addOffset("singRIGHT", 0, 27);
-				addOffset("singLEFT", -10, 10);
-				addOffset("singDOWN", 0, -30);
+				addOffset("singUP", -6, 30);
+				addOffset("singRIGHT", 0, 7);
+				addOffset("singLEFT", -10, -10);
+				addOffset("singDOWN", 0, -10);
 
 				playAnim('idle');
 			case 'mickle':
 				// DAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('mickle');
 				frames = tex;
-				animation.addByPrefix('idle', 'Mickle idle dance', 24,false);
-				animation.addByPrefix('singUP', 'Mickle Sing Note UP', 24);
-				animation.addByPrefix('singRIGHT', 'Mickle Sing Note RIGHT', 24);
-				animation.addByPrefix('singDOWN', 'Mickle Sing Note DOWN', 24);
-				animation.addByPrefix('singLEFT', 'Mickle Sing Note LEFT', 24);
+				animation.addByPrefix('idle', 'mickle idle', 24,false);
+				animation.addByPrefix('singUP', 'mickle up', 24);
+				animation.addByPrefix('singRIGHT', 'mickle right', 24);
+				animation.addByPrefix('singDOWN', 'mickle down', 24);
+				animation.addByPrefix('singLEFT', 'mickle left', 24);
 
 				addOffset('idle');
-				addOffset("singUP", -6, 50);
-				addOffset("singRIGHT", 0, 27);
-				addOffset("singLEFT", -10, 10);
-				addOffset("singDOWN", 0, -30);
+				addOffset("singUP", 0, -100);
+				addOffset("singRIGHT", 0, -100);
+				addOffset("singLEFT", 0, -100);
+				addOffset("singDOWN", 0, -100);
+
+				playAnim('idle');
+			case 'agoti':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('AGOTIMS');
+				frames = tex;
+				animation.addByPrefix('idle', 'Agoti_Idle', 24,false);
+				animation.addByPrefix('singUP', 'Agoti_Up', 24);
+				animation.addByPrefix('singRIGHT', 'Agoti_Right', 24);
+				animation.addByPrefix('singDOWN', 'Agoti_Down', 24);
+				animation.addByPrefix('singLEFT', 'Agoti_Left', 24);
+
+				addOffset("idle", -100, 0);
+				addOffset("singUP", -100, 0);
+				addOffset("singRIGHT", -100, 0);
+				addOffset("singLEFT", -100, 0);
+				addOffset("singDOWN", -100, 0);
+
+				playAnim('idle');
+			case 'bf-agoti':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('AGOTI');
+				frames = tex;
+				animation.addByPrefix('idle', 'Agoti_Idle', 24,false);
+				animation.addByPrefix('singUP', 'Agoti_Up', 24);
+				animation.addByPrefix('singRIGHT', 'Agoti_Right', 24);
+				animation.addByPrefix('singDOWN', 'Agoti_Down', 24);
+				animation.addByPrefix('singLEFT', 'Agoti_Left', 24);
+				animation.addByPrefix('singUPmiss', 'Agoti_Up', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'Agoti_Left', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'Agoti_Right', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'Agoti_Down', 24, false);
+				animation.addByPrefix('hey', 'Agoti_Up', 24, false);
+
+				animation.addByPrefix('firstDeath', "Agoti_Idle", 24, false);
+				animation.addByPrefix('deathLoop', "Agoti_Idle", 24, true);
+				animation.addByPrefix('deathConfirm', "Agoti_Idle", 24, false);
+
+				animation.addByPrefix('scared', 'BF idle shaking', 24);
+
+				addOffset('idle', -5, 600);
+				addOffset("singUP", -29, 627);
+				addOffset("singRIGHT", -38, 593);
+				addOffset("singLEFT", 12, 594);
+				addOffset("singDOWN", -10, 200);
+				addOffset("singUPmiss", -29, 627);
+				addOffset("singRIGHTmiss", -30, 621);
+				addOffset("singLEFTmiss", 12, 624);
+				addOffset("singDOWNmiss", -11, 581);
+				addOffset("hey", 7, 4);
+				addOffset('firstDeath', 37, 11);
+				addOffset('deathLoop', 37, 5);
+				addOffset('deathConfirm', 37, 69);
+				addOffset('scared', -4);
 
 				playAnim('idle');
 			case 'spooky':

@@ -3,3 +3,18 @@ export/
 APIStuff.hx
 export-lol/
 export-lol 1/
+assets/exclude/Data/madpiero-laughs/madpiero-laughs-easy.json
+assets/exclude/Data/madpiero-laughs/madpiero-laughs-hard.json
+assets/exclude/Data/madpiero-laughs/madpiero-laughs.json
+assets/exclude/Songs/madpiero-laughs/Inst.mp3
+assets/exclude/Songs/madpiero-laughs/Inst.ogg
+assets/exclude/Songs/madpiero-laughs/Voices.mp3
+assets/exclude/Songs/madpiero-laughs/Voices.ogg
+assets/preload/data/freeplaySonglist.txt
+assets/preload/data/madpiero-laughs/madpiero-laughs-easy.json
+assets/preload/data/madpiero-laughs/madpiero-laughs-hard.json
+assets/preload/data/madpiero-laughs/madpiero-laughs.json
+assets/songs/madpiero-laughs/Inst.mp3
+assets/songs/madpiero-laughs/Inst.ogg
+assets/songs/madpiero-laughs/Voices.mp3
+assets/songs/madpiero-laughs/Voices.ogg

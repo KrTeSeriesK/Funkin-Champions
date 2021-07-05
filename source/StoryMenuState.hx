@@ -23,7 +23,6 @@ class StoryMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
-		['Tutorial'],
 		['Genesis', 'Bitcrush']
 	];
 	var curDifficulty:Int = 1;
@@ -31,7 +30,6 @@ class StoryMenuState extends MusicBeatState
 	public static var weekUnlocked:Array<Bool> = [true, true];
 
 	var weekCharacters:Array<Dynamic> = [
-		['dad', 'bf', 'gf'],
 		['dad', 'bf', 'gf']
 
 		];
@@ -40,7 +38,6 @@ class StoryMenuState extends MusicBeatState
 	var ConfirmAnim:String = 'bfConfirm';
 	
 	var weekNames:Array<String> = [
-		"",
 		"Mickle Madness"
 	];
 

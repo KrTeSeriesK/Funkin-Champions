@@ -13,6 +13,7 @@ Mickle: Music, characters, story, background art. (for now)
 we don't have any artists but don't go askin' to draw for us unless you're a known member of the community.
 
 
+## Links:
 
 mick's shit:
 
@@ -22,9 +23,11 @@ mick's shit:
 my shit: 
 
 	https://www.youtube.com/channel/UC1B4-N-RILTYmXZ11WtJFSg
-	discord mentioned above but KrTe#4642
+	KrTe#4642
 	https://www.twitch.tv/krtettv
 	https://github.com/KrTeSeriesK
+
+
 
 alr thanks have a good day
 

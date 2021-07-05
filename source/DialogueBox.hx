@@ -69,20 +69,20 @@ class DialogueBox extends FlxSpriteGroup
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
-				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
+				box.animation.addByIndices('normalOpen', 'Text Box Appear', [4], "", 24);
 			case 'roses' | 'b-roses':
 				hasDialog = true;
 				FlxG.sound.play(Paths.sound('ANGRY_TEXT_BOX'));
 
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad');
 				box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
-				box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [4], "", 24);
+				box.animation.addByIndices('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', [4], "", 24);
 
 			case 'thorns' | 'b-thorns':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-evil');
 				box.animation.addByPrefix('normalOpen', 'Spirit Textbox spawn', 24, false);
-				box.animation.addByIndices('normal', 'Spirit Textbox spawn', [11], "", 24);
+				box.animation.addByIndices('normalOpen', 'Spirit Textbox spawn', [11], "", 24);
 
 				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
 				face.setGraphicSize(Std.int(face.width * 6));
@@ -91,12 +91,12 @@ class DialogueBox extends FlxSpriteGroup
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
-				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
+				box.animation.addByIndices('normalOpen', 'Text Box Appear', [4], "", 24);
 			case 'bitcrush':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
-				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
+				box.animation.addByIndices('normalOpen', 'Text Box Appear', [4], "", 24);
 		}
 
 		this.dialogueList = dialogueList;
@@ -113,7 +113,7 @@ class DialogueBox extends FlxSpriteGroup
 		add(portraitLeft);
 		portraitLeft.visible = false;
 
-		portraitRight = new FlxSprite(650, 175);
+		portraitRight = new FlxSprite(650, 150);
 		portraitRight.frames = Paths.getSparrowAtlas('weeb/bfPortrait');
 		portraitRight.animation.addByPrefix('enter', 'Boyfriend portrait enter', 24, false);
 		portraitRight.updateHitbox();
@@ -130,9 +130,11 @@ class DialogueBox extends FlxSpriteGroup
 
 		
 		handSelect = new FlxSprite(1100, 575).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
-		handSelect.animation.addByPrefix('flash', 'arrow idle', 24, false);
-		add(handSelect);
+		handSelect.frames = Paths.getSparrowAtlas('weeb/pixelUI/hand_textbox');
+		handSelect.animation.addByPrefix('flash', 'flash', 10, true);
 		handSelect.animation.play('flash');
+		add(handSelect);
+		
 
 
 		if (!talkingRight)
@@ -177,7 +179,7 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			if (box.animation.curAnim.name == 'normalOpen' && box.animation.curAnim.finished)
 			{
-				box.animation.play('normal');
+				box.animation.play('normalOpen');
 				dialogueOpened = true;
 			}
 		}

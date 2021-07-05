@@ -1,3 +1,28 @@
+# Mickle Madness Shit
+
+Let's just get this shit done, then you can look under here to find out how to compile the game yourself. 
+
+This is obviously the source code for Mickle Madness, so use it how you want, just make sure to credit me and Mick for all this shit. 
+If you want to use Mickle as a background character, just credit us n' shit, you know the drill. 
+
+Creidts: KrTe (KrTe#4642 if you wanna contact me): Coding shit, charting, basically all the shit behind the scenes. 
+	 Mickle: Music, characters, story, background art. (for now)
+	 we don't have any artists but don't go askin' to draw for us unless you're a known member of the community.
+	 
+mick's shit:
+
+	 https://twitter.com/MickleSylveon
+	 https://www.youtube.com/channel/UCu764K7CG9LVJzSUyL5LgqQ
+	 
+my shit: 
+
+	https://www.youtube.com/channel/UC1B4-N-RILTYmXZ11WtJFSg
+	discord mentioned above but KrTe#4642
+	https://www.twitch.tv/krtettv
+	https://github.com/KrTeSeriesK
+
+alr thanks have a good day
+
 # Friday Night Funkin
 
 This is the repository for Friday Night Funkin, a game originally made for Ludum Dare 47 "Stuck In a Loop".

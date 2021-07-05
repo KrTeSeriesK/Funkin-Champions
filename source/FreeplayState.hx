@@ -84,7 +84,6 @@ class FreeplayState extends MusicBeatState
 		isDebug = true;
 		#end
 		
-		addWeek(['champions-test'], 0, ['holo']);
 		addWeek(['Genesis', 'Bitcrush'], 1, ['mickle']);
 		// LOAD MUSIC
 

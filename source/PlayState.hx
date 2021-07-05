@@ -232,6 +232,10 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('b-roses/b-rosesDialogue'));
 			case 'b-thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('b-thorns/b-thornsDialogue'));*/
+			case 'genesis':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('genesis/genesisDialogue'));
+			case 'bitcrush':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('bitcrush/bitcrushDialogue'));
 			default:
 				dialogue = ["bitch"];
 		}
@@ -1046,6 +1050,10 @@ class PlayState extends MusicBeatState
 					dad.playAnim('lmao', true);
 					schoolIntro(doof);
 				case 'thorns' | 'b-thorns':
+					schoolIntro(doof);
+				case 'genesis':
+					schoolIntro(doof);
+				case 'bitcrush':
 					schoolIntro(doof);
 				default:
 					startCountdown();

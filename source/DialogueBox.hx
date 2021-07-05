@@ -130,7 +130,9 @@ class DialogueBox extends FlxSpriteGroup
 
 		
 		handSelect = new FlxSprite(1100, 575).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
+		handSelect.animation.addByPrefix('flash', 'arrow idle', 24, false);
 		add(handSelect);
+		handSelect.animation.play('flash');
 
 
 		if (!talkingRight)

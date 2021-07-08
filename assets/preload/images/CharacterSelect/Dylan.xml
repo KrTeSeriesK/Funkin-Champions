@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Dylan.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="DYLAN0000" x="2" y="2" width="398" height="395" frameX="0" frameY="-20" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0001" x="2" y="2" width="398" height="395" frameX="0" frameY="-20" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0002" x="405" y="2" width="399" height="396" frameX="0" frameY="-19" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0003" x="405" y="2" width="399" height="396" frameX="0" frameY="-19" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0004" x="809" y="2" width="400" height="401" frameX="0" frameY="-14" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0005" x="809" y="2" width="400" height="401" frameX="0" frameY="-14" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0006" x="1214" y="2" width="403" height="414" frameX="0" frameY="-1" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0007" x="1214" y="2" width="403" height="414" frameX="0" frameY="-1" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0008" x="1622" y="2" width="402" height="415" frameX="0" frameY="0" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0009" x="1622" y="2" width="402" height="415" frameX="0" frameY="0" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0010" x="1622" y="2" width="402" height="415" frameX="0" frameY="0" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0011" x="1622" y="2" width="402" height="415" frameX="0" frameY="0" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0012" x="1622" y="2" width="402" height="415" frameX="0" frameY="0" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="DYLAN0013" x="1622" y="2" width="402" height="415" frameX="0" frameY="0" frameWidth="403" frameHeight="415"/>
+	<SubTexture name="HEY_DYLAN0000" x="2" y="422" width="422" height="416" frameX="0" frameY="0" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0001" x="2" y="422" width="422" height="416" frameX="0" frameY="0" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0002" x="429" y="422" width="422" height="413" frameX="0" frameY="-5" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0003" x="429" y="422" width="422" height="413" frameX="0" frameY="-5" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0004" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0005" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0006" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0007" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0008" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0009" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0010" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0011" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0012" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0013" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0014" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0015" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0016" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0017" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0018" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0019" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0020" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0021" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0022" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0023" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0024" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+	<SubTexture name="HEY_DYLAN0025" x="856" y="422" width="423" height="415" frameX="0" frameY="-3" frameWidth="423" frameHeight="418"/>
+</TextureAtlas>

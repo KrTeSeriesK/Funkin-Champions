@@ -33,6 +33,8 @@ class DialogueBox extends FlxSpriteGroup
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
+	
+	var isBsides:String = if(PlayState.storyWeek == 13) '-bsides' else '';
 
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
@@ -84,7 +86,7 @@ class DialogueBox extends FlxSpriteGroup
 				box.animation.addByPrefix('normalOpen', 'Spirit Textbox spawn', 24, false);
 				box.animation.addByIndices('normalOpen', 'Spirit Textbox spawn', [11], "", 24);
 
-				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
+				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('portraits/spirit'+isBsides+'FaceForward'));
 				face.setGraphicSize(Std.int(face.width * 6));
 				add(face);
 			case 'genesis':
@@ -105,7 +107,7 @@ class DialogueBox extends FlxSpriteGroup
 			return;
 		
 		portraitLeft = new FlxSprite(-20, 40);
-		portraitLeft.frames = Paths.getSparrowAtlas('weeb/senpaiPortrait');
+		portraitLeft.frames = Paths.getSparrowAtlas('portraits/senpai'+isBsides+'Portrait');
 		portraitLeft.animation.addByPrefix('enter', 'Senpai Portrait Enter', 24, false);
 		portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
 		portraitLeft.updateHitbox();
@@ -115,6 +117,11 @@ class DialogueBox extends FlxSpriteGroup
 
 		portraitRight = new FlxSprite(650, 150);
 		portraitRight.frames = Paths.getSparrowAtlas('weeb/bfPortrait');
+		
+		var getChar = PlayState.curPlayer + PlayState.CharacterSuffix;
+		
+		portraitRight = new FlxSprite(0, 40);
+		portraitRight.frames = Paths.getSparrowAtlas('portraits/'+getChar+'Portrait');
 		portraitRight.animation.addByPrefix('enter', 'Boyfriend portrait enter', 24, false);
 		portraitRight.updateHitbox();
 		portraitRight.scrollFactor.set();

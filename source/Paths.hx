@@ -16,7 +16,7 @@ class Paths
 		currentLevel = name.toLowerCase();
 	}
 
-	static function getPath(file:String, type:AssetType, library:Null<String>)
+	public static function getPath(file:String, type:AssetType, ?library:Null<String> = null)
 	{
 		if (library != null)
 			return getLibraryPath(file, library);
@@ -24,6 +24,10 @@ class Paths
 		if (currentLevel != null)
 		{
 			var levelPath = getLibraryPathForce(file, currentLevel);
+			if (OpenFlAssets.exists(levelPath, type))
+				return levelPath;
+
+			levelPath = getLibraryPathForce(file, currentLevel + '_high');
 			if (OpenFlAssets.exists(levelPath, type))
 				return levelPath;
 

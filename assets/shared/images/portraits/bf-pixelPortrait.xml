@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="boyfriendPortrait.png">
+<TextureAtlas imagePath="bf-pixelPortrait.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Boyfriend portrait enter instance 10000" x="0" y="0" width="472" height="286"/>
+</TextureAtlas>

@@ -2,15 +2,13 @@ package;
 
 import flixel.FlxSprite;
 
-using StringTools;
-
 class HealthIcon extends FlxSprite
 {
 	/**
 	 * Used for FreeplayState! If you use it elsewhere, prob gonna annoying
 	 */
 	public var sprTracker:FlxSprite;
-	
+
 	public function new(char:String = 'bf', isPlayer:Bool = false, frame:Int = 0)
 	{
 		super();
@@ -85,8 +83,8 @@ class HealthIcon extends FlxSprite
 		animation.add('holo', [120], 0, false, isPlayer);
 		
 		animation.play(char);
-		getIcon(char,isPlayer,frame);
 		scrollFactor.set();
+		animation.curAnim.curFrame = frame;
 	}
 
 	override function update(elapsed:Float)
@@ -95,80 +93,5 @@ class HealthIcon extends FlxSprite
 
 		if (sprTracker != null)
 			setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y - 30);
-	}
-	function fuck(char:String = 'bf')
-	{
-		var suffixTrigger:Bool = false;
-		var suffixes:Array<String> = ['bsides', 'pixel', 'christmas', 'car', 'lolthisisjustfiller'];
-		var getChar:String = '';
-		
-		if (char.split('-').length > 1)
-		{
-			if ((char.split('-')[0]).trim() == 'bf')
-			{
-				for (i in 0...4)
-				{
-					if ((char.split('-')[1]).trim() == suffixes[i]) //check for other suffixes
-					{
-						suffixTrigger = true; //its got a suffix!!
-						break;
-					}
-				}
-				
-				if (suffixTrigger) //does it have a suffix?
-				{
-					getChar = (char.split('-')[0]).trim();
-				}
-				else //it must be another playable!
-				{
-					getChar = (char.split('-')[1]).trim();
-				}
-			}
-			else
-			{
-				if (char.startsWith('senpai-angry'))
-				{
-					getChar = 'senpai-angry'; //fuck this LOL
-				}
-				else
-				{
-					getChar = (char.split('-')[0]).trim();
-				}
-			}
-			
-			if (char.contains('pixel'))
-				getChar += '-pixel';
-					
-			if (char.contains('bsides'))
-				getChar += '-bsides';
-			
-			trace((char.split('-')[1]).trim());
-		}
-		else
-		{
-			getChar = char;
-		}
-		
-		if ((char.split('-')[0]).trim() == 'kiryu') //no icons LOL
-			getChar = 'face';
-			
-		return getChar;
-	}
-	public function getIcon(char:String = 'bf', isPlayer:Bool = false, frame:Int = 0)
-	{
-		var getChar:String = '';
-		
-		getChar = fuck(char);
-		loadGraphic(Paths.image('icons/icon-' + getChar), true, 150, 150);
-		animation.add(getChar, [0, 1, 2], 0, false, isPlayer);
-		animation.play(getChar, false, false, frame);
-		switch(char) 
-		{
-			case 'bf-pixel' | 'senpai' | 'spirit':
-				antialiasing = false;
-
-			default:
-				antialiasing = true;
-		}
 	}
 }

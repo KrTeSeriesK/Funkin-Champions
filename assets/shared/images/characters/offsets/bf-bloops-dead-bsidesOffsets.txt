@@ -1,4 +1,0 @@
-firstDeath 311 44
-idle 311 44
-deathLoop 290 -220
-deathConfirm 311 44

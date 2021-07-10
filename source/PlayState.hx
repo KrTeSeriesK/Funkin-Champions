@@ -89,7 +89,6 @@ class PlayState extends MusicBeatState
 	private var strumLineNotes:FlxTypedGroup<FlxSprite>;
 	private var playerStrums:FlxTypedGroup<FlxSprite>;
 	private var player2Strums:FlxTypedGroup<FlxSprite>;
-	private var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
 	private var strumming2:Array<Bool> = [false, false, false, false];
 
@@ -190,9 +189,7 @@ class PlayState extends MusicBeatState
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
-	
-		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
-		
+
 		FlxCamera.defaultCameras = [camGame];
 
 		persistentUpdate = true;
@@ -905,7 +902,6 @@ class PlayState extends MusicBeatState
 
 		strumLineNotes = new FlxTypedGroup<FlxSprite>();
 		add(strumLineNotes);
-		add(grpNoteSplashes);
 
 		playerStrums = new FlxTypedGroup<FlxSprite>();
 		player2Strums = new FlxTypedGroup<FlxSprite>();
@@ -1007,7 +1003,6 @@ class PlayState extends MusicBeatState
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
 		doof.cameras = [camHUD];
-		grpNoteSplashes.cameras = [camHUD];
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -2044,7 +2039,7 @@ class PlayState extends MusicBeatState
 				if (blackOutScreen.visible && daNote.y <= (FlxG.height/4)*3)
 					daNote.alpha -= daNote.alpha / 13;
 				else
-					daNote.alpha = if (daNote.isSustainNote) 0.6 else 1;
+					daNote.alpha = 1;
 
 				// i am so fucking sorry for this if condition
 				if (daNote.isSustainNote
@@ -2328,9 +2323,9 @@ class PlayState extends MusicBeatState
 
 	var endingSong:Bool = false;
 
-	private function popUpScore(note:Note = null):Void
+	private function popUpScore(strumtime:Float):Void
 	{
-		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition);
+		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
 		// boyfriend.playAnim('hey');
 		vocals.volume = 1;
 
@@ -2361,10 +2356,9 @@ class PlayState extends MusicBeatState
 			daRating = 'good';
 			scores[1]++;
 		}
-		if (daRating == 'sick' && note != null)
+		else
 		{	
 			scores[0]++;
-			doNoteSplash(note);
 		}
 
 		songScore += score;
@@ -2758,21 +2752,14 @@ class PlayState extends MusicBeatState
 			}
 		}
 	}
-	
-	private function doNoteSplash(note:Note):Void
-	{
-		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(note.x, note.y, note.noteData);
-		grpNoteSplashes.add(splash);
-	}
-	
+
 	function goodNoteHit(note:Note):Void
 	{
 		if ((!note.wasGoodHit) && (!(modes[4] && perfect.animation.curAnim.name == 'dies')))
 		{
 			if (!note.isSustainNote)
 			{
-				popUpScore(note);
+				popUpScore(note.strumTime);
 				combo += 1;
 			}
 

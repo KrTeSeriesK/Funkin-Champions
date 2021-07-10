@@ -4,7 +4,6 @@ import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import flixel.util.FlxColor;
-import openfl.display.BlendMode;
 #if polymod
 import polymod.format.ParseRules.TargetSignatureElement;
 #end
@@ -126,8 +125,6 @@ class Note extends FlxSprite
 		{
 			noteScore * 0.2;
 			alpha = 0.6;
-			
-			blend = BlendMode.ADD;
 
 			x += width / 2;
 
@@ -179,7 +176,7 @@ class Note extends FlxSprite
 		{
 			// The * 0.5 is so that it's easier to hit them too late, instead of too early
 			if (strumTime >= Conductor.songPosition - Conductor.safeZoneOffset
-				&& strumTime <= Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
+				&& strumTime <= Conductor.songPosition + (Conductor.safeZoneOffset * 0.6))
 				canBeHit = true;
 			else
 				canBeHit = false;

@@ -1121,10 +1121,12 @@ class PlayState extends MusicBeatState
 			if (SONG.song.toLowerCase() == 'thorns')
 			{
 				add(red);
+				camHUD.visible = false;
 			}
 			if (SONG.song.toLowerCase() == 'b-thorns')
 			{
 				add(blue);
+				camHUD.visible = false;
 			}
 		}
 
@@ -1192,6 +1194,8 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{		
+		
+		camHUD.visible = true;
 		inCutscene = false;
 
 		generateStaticArrows(0);

@@ -8,8 +8,9 @@ If you want to use Mickle as a background character, just credit us n' shit, you
 ## Credits:
 KrTe (KrTe#4642 if you wanna contact me): Coding shit, charting, basically all the shit behind the scenes. 
 
-Mickle: Music, characters, story, art. (for now)
+Mickle: Music, characters, story, background art. (for now)
 
+we don't have any artists but don't go askin' to draw for us unless you're a known member of the community.
 
 
 ## Links:

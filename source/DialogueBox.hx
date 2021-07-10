@@ -97,6 +97,11 @@ class DialogueBox extends FlxSpriteGroup
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
 				box.animation.addByIndices('normalOpen', 'Text Box Appear', [4], "", 24);
+			case 'cyberspace':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
+				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
+				box.animation.addByIndices('normalOpen', 'Text Box Appear', [4], "", 24);
 		}
 
 		this.dialogueList = dialogueList;

@@ -236,6 +236,8 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('genesis/genesisDialogue'));
 			case 'bitcrush':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('bitcrush/bitcrushDialogue'));
+			case 'cyberspace':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('cyberspace/cyberspaceDialogue'));
 			default:
 				dialogue = ["bitch"];
 		}
@@ -1054,6 +1056,8 @@ class PlayState extends MusicBeatState
 				case 'genesis':
 					schoolIntro(doof);
 				case 'bitcrush':
+					schoolIntro(doof);
+				case 'cyberspace':
 					schoolIntro(doof);
 				default:
 					startCountdown();

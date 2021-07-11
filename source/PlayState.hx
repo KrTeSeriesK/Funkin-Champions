@@ -1059,6 +1059,8 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'bitcrush':
 					schoolIntro(doof);
+				case 'hyperactive':
+					schoolIntro(doof);
 				case 'cyberspace':
 					schoolIntro(doof);
 				default:

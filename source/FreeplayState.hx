@@ -84,7 +84,9 @@ class FreeplayState extends MusicBeatState
 		isDebug = true;
 		#end
 		
-		addWeek(['Genesis', 'Bitcrush', 'Cyberspace'], 1, ['mickle']);
+		addWeek(['Genesis', 'Bitcrush', 'Hyperactive'], 1, ['mickle']);
+			if (StoryMenuState.weekUnlocked[2] || isDebug)
+		addWeek(['Cyberspace'], 1, ['mickle']);
 		// LOAD MUSIC
 
 		// LOAD CHARACTERS

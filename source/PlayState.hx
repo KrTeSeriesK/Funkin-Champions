@@ -239,7 +239,7 @@ class PlayState extends MusicBeatState
 			case 'cyberspace':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('cyberspace/cyberspaceDialogue'));
 			case 'hyperactive':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('cyberspace/hyperactiveDialogue'));
+				dialogue = CoolUtil.coolTextFile(Paths.txt('hyperactive/hyperactiveDialogue'));
 			default:
 				dialogue = ["bitch"];
 		}
